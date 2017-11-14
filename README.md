@@ -1,5 +1,5 @@
 <h2>UXKit
-<img src="http://zeezide.com/img/UXKitIcon1024.svg"
+<img src="http://zeezide.com/img/UXKitIcon1024.png"
   align="right" width="128" height="128" />
 </h2>
 
