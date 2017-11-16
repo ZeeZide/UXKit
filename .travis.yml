@@ -1,0 +1,17 @@
+language:  generic
+
+notifications:
+  slack:
+    rooms:
+      - zeeql:odi4PEJUdmDPkBfjhHIaSdrS
+
+matrix:
+    include:
+        - os:   osx
+          osx_image: xcode8.2
+        - os:   osx
+          osx_image: xcode9
+
+script:
+    - swift build -c release
+    - swift build -c debug
