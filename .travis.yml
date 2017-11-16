@@ -13,5 +13,5 @@ matrix:
           osx_image: xcode9
 
 script:
-    - swift build -c release
-    - swift build -c debug
+    - xcodebuild -configuration Release
+    - xcodebuild -configuration Debug
