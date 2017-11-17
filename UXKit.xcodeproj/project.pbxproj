@@ -49,6 +49,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E8460D751FBF12D2002CDC28 /* AppKitBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppKitBase.xcconfig; sourceTree = "<group>"; };
+		E8460D761FBF12D2002CDC28 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		E8460D771FBF12D2002CDC28 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		E8460D781FBF12D2002CDC28 /* MacStaticLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MacStaticLib.xcconfig; sourceTree = "<group>"; };
+		E8460D791FBF12D2002CDC28 /* MobileStaticLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MobileStaticLib.xcconfig; sourceTree = "<group>"; };
+		E8460D7A1FBF12D2002CDC28 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		E8460D7B1FBF12D2002CDC28 /* StaticLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StaticLib.xcconfig; sourceTree = "<group>"; };
+		E8460D7C1FBF12D2002CDC28 /* UIKitBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UIKitBase.xcconfig; sourceTree = "<group>"; };
 		E8A9B2361FBB318800C1063B /* libUXKit-AppKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libUXKit-AppKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A9B2451FBB326800C1063B /* NSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTableViewCell.swift; sourceTree = "<group>"; };
 		E8A9B2461FBB326800C1063B /* UXCollectionView-AppKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UXCollectionView-AppKit.swift"; sourceTree = "<group>"; };
@@ -72,14 +80,6 @@
 		E8A9B25A1FBB326800C1063B /* UXTableView-UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UXTableView-UIKit.swift"; sourceTree = "<group>"; };
 		E8A9B25B1FBB326800C1063B /* UXTargetAction-UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UXTargetAction-UIKit.swift"; sourceTree = "<group>"; };
 		E8A9B25C1FBB326800C1063B /* UXView-UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UXView-UIKit.swift"; sourceTree = "<group>"; };
-		E8A9B2741FBB329C00C1063B /* AppKitBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppKitBase.xcconfig; sourceTree = "<group>"; };
-		E8A9B2751FBB329C00C1063B /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
-		E8A9B2761FBB329C00C1063B /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		E8A9B2771FBB329C00C1063B /* MacStaticLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MacStaticLib.xcconfig; sourceTree = "<group>"; };
-		E8A9B2781FBB329C00C1063B /* MobileStaticLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MobileStaticLib.xcconfig; sourceTree = "<group>"; };
-		E8A9B2791FBB329C00C1063B /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		E8A9B27A1FBB329C00C1063B /* StaticLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StaticLib.xcconfig; sourceTree = "<group>"; };
-		E8A9B27B1FBB329C00C1063B /* UIKitBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UIKitBase.xcconfig; sourceTree = "<group>"; };
 		E8A9B2801FBB351D00C1063B /* libUXKit-UIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libUXKit-UIKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A9B29B1FBB381000C1063B /* README.md */ = {isa = PBXFileReference; explicitFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,12 +102,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E8460D741FBF12D2002CDC28 /* xcconfig */ = {
+			isa = PBXGroup;
+			children = (
+				E8460D751FBF12D2002CDC28 /* AppKitBase.xcconfig */,
+				E8460D761FBF12D2002CDC28 /* Base.xcconfig */,
+				E8460D771FBF12D2002CDC28 /* Debug.xcconfig */,
+				E8460D781FBF12D2002CDC28 /* MacStaticLib.xcconfig */,
+				E8460D791FBF12D2002CDC28 /* MobileStaticLib.xcconfig */,
+				E8460D7A1FBF12D2002CDC28 /* Release.xcconfig */,
+				E8460D7B1FBF12D2002CDC28 /* StaticLib.xcconfig */,
+				E8460D7C1FBF12D2002CDC28 /* UIKitBase.xcconfig */,
+			);
+			path = xcconfig;
+			sourceTree = "<group>";
+		};
 		E8A9B22D1FBB318700C1063B = {
 			isa = PBXGroup;
 			children = (
 				E8A9B29B1FBB381000C1063B /* README.md */,
 				E8A9B2421FBB326800C1063B /* Sources */,
-				E8A9B2731FBB329C00C1063B /* xcconfig */,
+				E8460D741FBF12D2002CDC28 /* xcconfig */,
 				E8A9B2371FBB318800C1063B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -180,22 +195,6 @@
 				E8A9B25C1FBB326800C1063B /* UXView-UIKit.swift */,
 			);
 			path = UIKit;
-			sourceTree = "<group>";
-		};
-		E8A9B2731FBB329C00C1063B /* xcconfig */ = {
-			isa = PBXGroup;
-			children = (
-				E8A9B2741FBB329C00C1063B /* AppKitBase.xcconfig */,
-				E8A9B2751FBB329C00C1063B /* Base.xcconfig */,
-				E8A9B2761FBB329C00C1063B /* Debug.xcconfig */,
-				E8A9B2771FBB329C00C1063B /* MacStaticLib.xcconfig */,
-				E8A9B2781FBB329C00C1063B /* MobileStaticLib.xcconfig */,
-				E8A9B2791FBB329C00C1063B /* Release.xcconfig */,
-				E8A9B27A1FBB329C00C1063B /* StaticLib.xcconfig */,
-				E8A9B27B1FBB329C00C1063B /* UIKitBase.xcconfig */,
-			);
-			name = xcconfig;
-			path = ../CoreS/xcconfig;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,21 +328,21 @@
 /* Begin XCBuildConfiguration section */
 		E8A9B23D1FBB318800C1063B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8A9B2761FBB329C00C1063B /* Debug.xcconfig */;
+			baseConfigurationReference = E8460D771FBF12D2002CDC28 /* Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		E8A9B23E1FBB318800C1063B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8A9B2791FBB329C00C1063B /* Release.xcconfig */;
+			baseConfigurationReference = E8460D7A1FBF12D2002CDC28 /* Release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		E8A9B2401FBB318800C1063B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8A9B2771FBB329C00C1063B /* MacStaticLib.xcconfig */;
+			baseConfigurationReference = E8460D781FBF12D2002CDC28 /* MacStaticLib.xcconfig */;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_MODULE_NAME = UXKit;
@@ -353,7 +352,7 @@
 		};
 		E8A9B2411FBB318800C1063B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8A9B2771FBB329C00C1063B /* MacStaticLib.xcconfig */;
+			baseConfigurationReference = E8460D781FBF12D2002CDC28 /* MacStaticLib.xcconfig */;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_MODULE_NAME = UXKit;
@@ -363,7 +362,7 @@
 		};
 		E8A9B2871FBB351D00C1063B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8A9B2781FBB329C00C1063B /* MobileStaticLib.xcconfig */;
+			baseConfigurationReference = E8460D791FBF12D2002CDC28 /* MobileStaticLib.xcconfig */;
 			buildSettings = {
 				PRODUCT_MODULE_NAME = UXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -375,7 +374,7 @@
 		};
 		E8A9B2881FBB351D00C1063B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8A9B2781FBB329C00C1063B /* MobileStaticLib.xcconfig */;
+			baseConfigurationReference = E8460D791FBF12D2002CDC28 /* MobileStaticLib.xcconfig */;
 			buildSettings = {
 				PRODUCT_MODULE_NAME = UXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
