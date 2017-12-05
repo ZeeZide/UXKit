@@ -27,4 +27,15 @@
     }
     
   }
+  
+  public extension UXTapGestureRecognizer {
+    // Note: NSClickGestureRecognizer
+    // - numberOfClicksRequired
+    // - numberOfTouchesRequired (10.12.2)
+    
+    var numberOfTapsRequired: Int {
+      set { numberOfClicksRequired = newValue }
+      get { return numberOfClicksRequired }
+    }
+  }
 #endif
