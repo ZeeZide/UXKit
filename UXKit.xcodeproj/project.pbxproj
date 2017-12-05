@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8A937071FD7322800F180F8 /* UXGestureActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A937061FD7322800F180F8 /* UXGestureActions.swift */; };
+		E8A937081FD7322800F180F8 /* UXGestureActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A937061FD7322800F180F8 /* UXGestureActions.swift */; };
 		E8A9B25D1FBB326800C1063B /* NSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9B2451FBB326800C1063B /* NSTableViewCell.swift */; };
 		E8A9B25E1FBB326800C1063B /* UXCollectionView-AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9B2461FBB326800C1063B /* UXCollectionView-AppKit.swift */; };
 		E8A9B25F1FBB326800C1063B /* UXFont-AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9B2471FBB326800C1063B /* UXFont-AppKit.swift */; };
@@ -57,6 +59,7 @@
 		E8460D7A1FBF12D2002CDC28 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		E8460D7B1FBF12D2002CDC28 /* StaticLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StaticLib.xcconfig; sourceTree = "<group>"; };
 		E8460D7C1FBF12D2002CDC28 /* UIKitBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UIKitBase.xcconfig; sourceTree = "<group>"; };
+		E8A937061FD7322800F180F8 /* UXGestureActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXGestureActions.swift; sourceTree = "<group>"; };
 		E8A9B2361FBB318800C1063B /* libUXKit-AppKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libUXKit-AppKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A9B2451FBB326800C1063B /* NSTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTableViewCell.swift; sourceTree = "<group>"; };
 		E8A9B2461FBB326800C1063B /* UXCollectionView-AppKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UXCollectionView-AppKit.swift"; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 				E8A9B2511FBB326800C1063B /* UXObjectPresentingType.swift */,
 				E8A9B2521FBB326800C1063B /* UXPasteboard.swift */,
 				E8A9B2531FBB326800C1063B /* UXViewController.swift */,
+				E8A937061FD7322800F180F8 /* UXGestureActions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -299,6 +303,7 @@
 				E8A9B2601FBB326800C1063B /* UXGestures-AppKit.swift in Sources */,
 				E8A9B2641FBB326800C1063B /* UXTargetAction-AppKit.swift in Sources */,
 				E8A9B2631FBB326800C1063B /* UXTableView-AppKit.swift in Sources */,
+				E8A937071FD7322800F180F8 /* UXGestureActions.swift in Sources */,
 				E8A9B2651FBB326800C1063B /* UXView-AppKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +320,7 @@
 				E8A9B2971FBB352B00C1063B /* UXLayout-UIKit.swift in Sources */,
 				E8A9B2991FBB352B00C1063B /* UXTargetAction-UIKit.swift in Sources */,
 				E8A9B29A1FBB352B00C1063B /* UXView-UIKit.swift in Sources */,
+				E8A937081FD7322800F180F8 /* UXGestureActions.swift in Sources */,
 				E8A9B2941FBB352B00C1063B /* UXFont-UIKit.swift in Sources */,
 				E8A9B28A1FBB352300C1063B /* UXObjectControl.swift in Sources */,
 				E8A9B2951FBB352B00C1063B /* UXGestures-UIKit.swift in Sources */,
