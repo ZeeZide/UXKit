@@ -1,9 +1,9 @@
 language:  generic
 
 notifications:
-  slack:
-    rooms:
-      - zeeql:odi4PEJUdmDPkBfjhHIaSdrS
+    slack:
+        rooms:
+            - zeeql:odi4PEJUdmDPkBfjhHIaSdrS
 
 matrix:
     include:
@@ -19,3 +19,4 @@ matrix:
 script:
     - xcodebuild -configuration Release
     - xcodebuild -configuration Debug
+
