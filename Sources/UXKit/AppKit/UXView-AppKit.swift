@@ -9,6 +9,7 @@
   public typealias UXView             = NSView
   public typealias UXLabel            = NSTextField
   public typealias UXTextField        = NSTextField
+  public typealias UXSecureTextField  = NSSecureTextField
   public typealias UXScrollView       = NSScrollView
   public typealias UXCollectionView   = NSCollectionView
   public typealias UXSearchField      = NSSearchField

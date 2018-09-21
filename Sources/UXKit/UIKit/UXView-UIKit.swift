@@ -9,6 +9,7 @@
   public typealias UXView             = UIView
   public typealias UXLabel            = UILabel
   public typealias UXTextField        = UITextField
+  public typealias UXSecureTextField  = UITextField
   public typealias UXScrollView       = UIScrollView
   public typealias UXCollectionView   = UICollectionView
   public typealias UXSearchField      = UISearchBar
