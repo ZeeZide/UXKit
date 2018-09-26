@@ -15,6 +15,16 @@
       return self
     }
   }
+
+  public extension NSTextField {
+    
+    @discardableResult
+    public func onChange(_ target: AnyObject?, _ action: Selector) -> Self {
+      self.target = target
+      self.action = action
+      return self
+    }
+  }
   
   public extension NSPopUpButton {
     
