@@ -6,17 +6,43 @@
 
 import Foundation
 
+/**
+ * A common protocol for "view controllers". Note that this itself is
+ * unfortunately NOT a view controller (because a protocol can't be restricted
+ * to a class).
+ * But you can piggy back to the real thing using the `uxViewController`
+ * property.
+ *
+ * The `UXViewController` alias either directly maps to `NSViewController` or
+ * `UIViewController`.
+ */
 @objc public protocol UXViewControllerType
                       : UXObjectPresentingType,
                         UXUserInterfaceItemIdentification
 {
   // Too bad that we can't adopt NSViewController as a protocol.
+  
+  // MARK: - Getting the actual VC
+  
+  var uxViewController : UXViewController { get }
+  
+  // MARK: - The View
+  
+  var view : UXView { get }
+  
+  // MARK: - View Controllers
+  
+  func addChildViewController(_ childViewController: UXViewController)
+  var childViewControllers : [ UXViewController ] { get }
 }
 
 #if os(macOS)
   import Cocoa
+
+  public typealias UXViewController = NSViewController
   
   extension NSViewController : UXViewControllerType {
+    public var uxViewController : UXViewController { return self }
   }
   
 #else // iOS
@@ -24,8 +50,12 @@ import Foundation
   
   fileprivate var uivcID : UInt8 = 42
 
+  public typealias UXViewController = UIViewController
+
   extension UIViewController : UXUserInterfaceItemIdentification {
-    
+
+    public var uxViewController : UXViewController { return self }
+
     /// Add `identifier` to UIViewController
     @objc open var identifier : UXUserInterfaceItemIdentifier? {
       set {
