@@ -28,7 +28,8 @@ import Foundation
   
   // MARK: - The View
   
-  var view : UXView { get }
+  /// Note: `view` is `UXView` on macOS and `UXView!` on iOS
+  var rootView : UXView { get }
   
   // MARK: - View Controllers
   
@@ -43,6 +44,7 @@ import Foundation
   
   extension NSViewController : UXViewControllerType {
     public var uxViewController : UXViewController { return self }
+    public var rootView         : UXView           { return view }
   }
   
 #else // iOS
@@ -55,6 +57,7 @@ import Foundation
   extension UIViewController : UXUserInterfaceItemIdentification {
 
     public var uxViewController : UXViewController { return self }
+    public var rootView         : UXView           { return view }
 
     /// Add `identifier` to UIViewController
     @objc open var identifier : UXUserInterfaceItemIdentifier? {
