@@ -52,12 +52,18 @@
        value1:   label on the left, gray detail on the right (same row)
        value1:   blue lable on the left 1/4, black detail on the right (same row)
        subtitle: label, below gray detail (two rows)
-      */
+       */
+      
       super.init(frame: UXRect())
-
+      
       if let id = id {
         self.identifier = UXUserInterfaceItemIdentifier(id)
       }
+    }
+    public convenience init(style: UXTableViewCellStyle,
+                            reuseIdentifier id: UXUserInterfaceItemIdentifier?)
+    {
+      self.init(style: style, reuseIdentifier: id?.rawValue)
     }
     public required init?(coder decoder: NSCoder) {
       fatalError("\(#function) not implemented")
