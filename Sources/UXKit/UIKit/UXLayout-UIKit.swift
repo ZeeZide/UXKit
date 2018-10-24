@@ -12,6 +12,9 @@
     public extension UIStackView {
       public typealias UXAlignment      = NSLayoutConstraint.Attribute
     }
+    public extension NSLayoutConstraint {
+      public typealias Priority         = UILayoutPriority
+    }
 
     public typealias UXStackViewAxis    = NSLayoutConstraint.Axis
   #else
