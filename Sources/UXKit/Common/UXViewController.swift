@@ -33,20 +33,14 @@ import Foundation
   
   // MARK: - View Controllers
   
-  func addChildViewController(_ childViewController: UXViewController)
-  var childViewControllers : [ UXViewController ] { get }
+  func uxAddChild(_ childViewController: UXViewController)
+  var  uxChildren : [ UXViewController ] { get }
 }
 
 #if os(macOS)
   import Cocoa
 
   public typealias UXViewController = NSViewController
-  
-  extension NSViewController : UXViewControllerType {
-    public var uxViewController : UXViewController { return self }
-    public var rootView         : UXView           { return view }
-  }
-  
 #else // iOS
   import UIKit
   
@@ -55,10 +49,7 @@ import Foundation
   public typealias UXViewController = UIViewController
 
   extension UIViewController : UXUserInterfaceItemIdentification {
-
-    public var uxViewController : UXViewController { return self }
-    public var rootView         : UXView           { return view }
-
+    
     /// Add `identifier` to UIViewController
     @objc open var identifier : UXUserInterfaceItemIdentifier? {
       set {
@@ -70,7 +61,25 @@ import Foundation
       }
     }
   }
-  
-  extension UIViewController : UXViewControllerType {
-  }
 #endif // end: iOS
+
+extension UXViewController : UXViewControllerType {
+  
+  public var uxViewController : UXViewController { return self }
+  public var rootView         : UXView           { return view }
+
+  // Note: The ux prefixes are necessary due to Swift compiler madness where
+  //       it gets confused what uses selectors in #ifs and when and how. Sigh.
+  
+  #if swift(>=4.2)
+    public func uxAddChild(_ vc: UXViewController) { addChild(vc) }
+    public var  uxChildren : [ UXViewController ]  { return children }
+  #else
+    public func uxAddChild(_ vc: UXViewController) {
+      addChildViewController(vc)
+    }
+    public var uxChildren : [ UXViewController ] {
+      return childViewControllers
+    }
+  #endif
+}

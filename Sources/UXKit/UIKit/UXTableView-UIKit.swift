@@ -32,28 +32,43 @@
    * an own class for that (`NSTableViewCell`).
    */
   public typealias UXTableViewCell      = UITableViewCell // same on iOS
-  
-  public typealias UXTableViewCellStyle = UITableViewCellStyle
+
+  #if swift(>=4.2)
+    public typealias UXTableViewCellStyle = UITableViewCell.CellStyle
+    public extension UITableView.RowAnimation {
+      public static var effectFade = UITableView.RowAnimation.fade
+      public static var effectGap  = UITableView.RowAnimation.middle // TBD
+      public static var slideUp    = UITableView.RowAnimation.top
+      public static var slideDown  = UITableView.RowAnimation.bottom
+      public static var slideLeft  = UITableView.RowAnimation.left
+      public static var slideRight = UITableView.RowAnimation.right
+    }
+  #else
+    public typealias UXTableViewCellStyle = UITableViewCellStyle
+    public extension UITableView {
+      public typealias CellStyle    = UITableViewCellStyle
+      public typealias RowAnimation = UITableViewRowAnimation
+    }
+    public extension UITableViewRowAnimation {
+      public static var effectFade = UITableViewRowAnimation.fade
+      public static var effectGap  = UITableViewRowAnimation.middle // TBD
+      public static var slideUp    = UITableViewRowAnimation.top
+      public static var slideDown  = UITableViewRowAnimation.bottom
+      public static var slideLeft  = UITableViewRowAnimation.left
+      public static var slideRight = UITableViewRowAnimation.right
+    }
+  #endif
 
   public protocol UXTableViewCellInit : class {
     init(style: UXTableViewCellStyle, reuseIdentifier: String?)
     func prepareForReuse()
   }
 
-  public extension UITableViewRowAnimation {
-    public static var effectFade = UITableViewRowAnimation.fade
-    public static var effectGap  = UITableViewRowAnimation.middle // TBD
-    public static var slideUp    = UITableViewRowAnimation.top
-    public static var slideDown  = UITableViewRowAnimation.bottom
-    public static var slideLeft  = UITableViewRowAnimation.left
-    public static var slideRight = UITableViewRowAnimation.right
-  }
-
   public extension UITableView {
     // TBD: maybe we should hide those and just use the iOS versions
     
     public func insertRows(at indexes: IndexSet,
-                           withAnimation ao : UITableViewRowAnimation
+                           withAnimation ao : UITableView.RowAnimation
                                             = .automatic)
     {
       // fade, right, left, top, bottom, none, middle, automatic
@@ -61,7 +76,7 @@
     }
     
     public func removeRows(at indexes: IndexSet,
-                           withAnimation ao : UITableViewRowAnimation
+                           withAnimation ao : UITableView.RowAnimation
                                             = .automatic)
     {
       deleteRows(at: indexes.map { IndexPath(row: $0, section: 0)}, with: ao)
