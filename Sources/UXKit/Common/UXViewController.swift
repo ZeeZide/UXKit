@@ -34,6 +34,7 @@ import Foundation
   // MARK: - View Controllers
   
   func uxAddChild(_ childViewController: UXViewController)
+  func uxRemoveFromParent()
   var  uxChildren : [ UXViewController ] { get }
 }
 
@@ -74,6 +75,7 @@ extension UXViewController : UXViewControllerType {
   #if swift(>=4.2)
     public func uxAddChild(_ vc: UXViewController) { addChild(vc) }
     public var  uxChildren : [ UXViewController ]  { return children }
+    public func uxRemoveFromParent() { removeFromParent() }
   #else
     public func uxAddChild(_ vc: UXViewController) {
       addChildViewController(vc)
@@ -81,5 +83,6 @@ extension UXViewController : UXViewControllerType {
     public var uxChildren : [ UXViewController ] {
       return childViewControllers
     }
+    public func uxRemoveFromParent() { removeFromParentViewController() }
   #endif
 }
