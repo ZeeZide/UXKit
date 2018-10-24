@@ -23,6 +23,13 @@
    * mirror what `UITableViewCell` does.
    */
   public typealias UXTableViewCellType  = UITableViewCell
+
+  #if swift(>=4.2)
+  #else
+    public extension UITableViewCell {
+      public typealias EditingStyle = UITableViewCellEditingStyle
+    }
+  #endif
   
   /**
    * A concrete view which you can use in a view datasource. It provides an
