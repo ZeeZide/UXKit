@@ -26,10 +26,22 @@
 
   public extension CGColor {
     
-    // iOS has no CGColor(gray:alpha:)
+    // macOS has no CGColor(gray:alpha:)
     public static func new(gray: CGFloat, alpha: CGFloat) -> CGColor {
       return CGColor(gray: gray, alpha: alpha)
     }
     
+  }
+  
+  public extension NSRect {
+    
+    public func inset(by insets: NSEdgeInsets) -> NSRect {
+      var newRect = self
+      newRect.origin.x    += insets.left
+      newRect.origin.y    += insets.bottom
+      newRect.size.width  -= (insets.left + insets.right)
+      newRect.size.height -= (insets.top  + insets.bottom)
+      return newRect
+    }
   }
 #endif // os(macOS)
