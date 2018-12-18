@@ -8,9 +8,16 @@
 
 import Foundation
 
+// Use: NSAttributedString.Key
+
 #if swift(>=4.2)
-#else
+  // builtin NSAttributedString.Key
+#elseif swift(>=4.0)
   public extension NSAttributedString {
     public typealias Key = NSAttributedStringKey // new way of doing things
+  }
+#else // < 4.0
+  public extension NSAttributedString {
+    public typealias Key = String // new way of doing things
   }
 #endif
