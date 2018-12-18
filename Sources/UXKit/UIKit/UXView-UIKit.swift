@@ -1,12 +1,13 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2018 ZeeZide GmbH. All rights reserved.
 //
 #if !os(macOS)
   import UIKit
 
   public typealias UXView             = UIView
+  public typealias UXResponder        = UIResponder
   public typealias UXLabel            = UILabel
   public typealias UXTextField        = UITextField
   public typealias UXSecureTextField  = UITextField
