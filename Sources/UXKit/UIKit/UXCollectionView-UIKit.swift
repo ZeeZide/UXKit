@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 #if !os(macOS)
   import UIKit
@@ -19,14 +19,14 @@
   
   public extension UICollectionView {
     
-    public var isSelectable : Bool { // Cocoa compat
+    var isSelectable : Bool { // Cocoa compat
       set { allowsSelection = newValue }
       get { return allowsSelection }
     }
     
-    public var selectionIndexPaths : [ IndexPath ] {
+    var selectionIndexPaths : [ IndexPath ] {
       return indexPathsForSelectedItems ?? []
     }
     
   }
-#endif
+#endif // !os(macOS)

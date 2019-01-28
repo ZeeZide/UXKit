@@ -19,7 +19,7 @@
   public extension NSTextField {
     
     @discardableResult
-    public func onChange(_ target: AnyObject?, _ action: Selector) -> Self {
+    func onChange(_ target: AnyObject?, _ action: Selector) -> Self {
       self.target = target
       self.action = action
       return self
@@ -29,7 +29,7 @@
   public extension NSPopUpButton {
     
     @discardableResult
-    public func onChange(_ target: AnyObject?, _ action: Selector) -> Self {
+    func onChange(_ target: AnyObject?, _ action: Selector) -> Self {
       self.target = target
       self.action = action
       return self
@@ -39,14 +39,14 @@
   public extension NSTableView {
     
     @discardableResult
-    public func onClick(_ target: AnyObject?, _ action: Selector) -> Self {
+    func onClick(_ target: AnyObject?, _ action: Selector) -> Self {
       self.target = target
       self.action = action
       return self
     }
     
     @discardableResult
-    public func onDoubleClick(_ target: AnyObject?, _ action: Selector) -> Self
+    func onDoubleClick(_ target: AnyObject?, _ action: Selector) -> Self
     {
       if self.target != nil && target !== self.target {
         print("setting different target for double-click action:", self,

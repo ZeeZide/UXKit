@@ -43,24 +43,24 @@
   public extension NSView {
     
     /// Set the needsLayout property to true. Use this for UIKit compat.
-    public final func setNeedsLayout() {
+    final func setNeedsLayout() {
       needsLayout = true
     }
     
     /// Set the needsDisplay property to true. Use this for UIKit compat.
     /// Note: NSControl also has a setNeedsDisplay() function, presumably doing
     ///       the same.
-    public final func setNeedsDisplay() {
+    final func setNeedsDisplay() {
       // This is ambiguous on macOS 10.12? NSControl also has setNeedsDisplay()
       needsDisplay = true
     }
     
     /// Set the needsUpdateConstraints property to true. Use this for UIKit compat.
-    public final func setNeedsUpdateConstraints() {
+    final func setNeedsUpdateConstraints() {
       needsUpdateConstraints = true
     }
     
-    public var center: CGPoint {
+    var center: CGPoint {
       // TODO: On UIKit this can be set, can we emulate this? (if layer based
       //       maybe?)
       return CGPoint(x: NSMidX(frame), y: NSMidY(frame))
@@ -71,7 +71,7 @@
     // UIActivityIndicatorView has `isAnimating`, `startAnimation` etc.
     
     /// Use this instead of `start[stop]Animation` for UIKit compatibility.
-    public var isSpinning : Bool {
+    var isSpinning : Bool {
       set {
         if newValue { startAnimation(nil) }
         else        { stopAnimation (nil) }
@@ -89,7 +89,7 @@
     
     #if swift(>=4.0)
       /// Use this instead of `state` for UIKit compatibility.
-      public var isOn: Bool {
+      var isOn: Bool {
         set { state = newValue ? .on : .off }
         get { return state == .on }
       }

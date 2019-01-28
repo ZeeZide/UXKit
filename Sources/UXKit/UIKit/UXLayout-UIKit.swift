@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 #if !os(macOS)
   import UIKit
@@ -10,10 +10,10 @@
 
   #if swift(>=4.2)
     public extension UIStackView {
-      public typealias UXAlignment      = NSLayoutConstraint.Attribute
+      typealias UXAlignment      = NSLayoutConstraint.Attribute
     }
     public extension NSLayoutConstraint {
-      public typealias Priority         = UILayoutPriority
+      typealias Priority         = UILayoutPriority
     }
 
     public typealias UXStackViewAxis    = NSLayoutConstraint.Axis

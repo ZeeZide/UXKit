@@ -27,7 +27,7 @@
   public extension CGColor {
     
     // macOS has no CGColor(gray:alpha:)
-    public static func new(gray: CGFloat, alpha: CGFloat) -> CGColor {
+    static func new(gray: CGFloat, alpha: CGFloat) -> CGColor {
       return CGColor(gray: gray, alpha: alpha)
     }
     
@@ -35,7 +35,7 @@
   
   public extension NSRect {
     
-    public func inset(by insets: NSEdgeInsets) -> NSRect {
+    func inset(by insets: NSEdgeInsets) -> NSRect {
       var newRect = self
       newRect.origin.x    += insets.left
       newRect.origin.y    += insets.bottom

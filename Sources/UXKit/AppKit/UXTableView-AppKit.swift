@@ -48,41 +48,41 @@
 
   /// Map UIKit options to AppKit options
   public extension NSTableView.AnimationOptions {
-    public static var fade   = effectFade
-    public static var right  = slideRight
-    public static var left   = slideLeft
-    public static var top    = slideUp
-    public static var bottom = slideDown
-    public static var none   : NSTableView.AnimationOptions = []
-    public static var middle = effectGap // TBD: is this the same?
+    static var fade   = effectFade
+    static var right  = slideRight
+    static var left   = slideLeft
+    static var top    = slideUp
+    static var bottom = slideDown
+    static var none   : NSTableView.AnimationOptions = []
+    static var middle = effectGap // TBD: is this the same?
     
     // TODO: automatic (make it depend on the modification operation)
     //       the 10.13 flags go till 0x40, so we could use a special raw
-    public static var automatic = slideDown
+    static var automatic = slideDown
   }
 
   public extension NSTableView {
     
-    public func insertRows(at indexes : [ IndexPath ],
-                           with ao    : NSTableView.AnimationOptions? = nil)
+    func insertRows(at indexes : [ IndexPath ],
+                    with ao    : NSTableView.AnimationOptions? = nil)
     {
       insertRows(at: IndexSet.setForRowsInPathes(indexes),
                  withAnimation: ao ?? []) // FIXME: rather .slideUp?
     }
     
-    public func deleteRows(at indexes : [ IndexPath ],
-                           with ao    : NSTableView.AnimationOptions? = nil)
+    func deleteRows(at indexes : [ IndexPath ],
+                    with ao    : NSTableView.AnimationOptions? = nil)
     {
       removeRows(at: IndexSet.setForRowsInPathes(indexes),
                  withAnimation: ao ?? []) // FIXME: rather .slideDown?
     }
     
-    public func reloadRows(at indexes : [ IndexPath ],
-                           with ao    : NSTableView.AnimationOptions? = nil)
+    func reloadRows(at indexes : [ IndexPath ],
+                    with ao    : NSTableView.AnimationOptions? = nil)
     {
       // Note: no animation support
       reloadData(forRowIndexes: IndexSet.setForRowsInPathes(indexes),
                  columnIndexes: IndexSet(integer: 0))
     }
   }
-#endif
+#endif // os(macOS)

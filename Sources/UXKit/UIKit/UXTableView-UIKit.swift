@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 #if !os(macOS)
   import UIKit
@@ -43,12 +43,12 @@
   #if swift(>=4.2)
     public typealias UXTableViewCellStyle = UITableViewCell.CellStyle
     public extension UITableView.RowAnimation {
-      public static var effectFade = UITableView.RowAnimation.fade
-      public static var effectGap  = UITableView.RowAnimation.middle // TBD
-      public static var slideUp    = UITableView.RowAnimation.top
-      public static var slideDown  = UITableView.RowAnimation.bottom
-      public static var slideLeft  = UITableView.RowAnimation.left
-      public static var slideRight = UITableView.RowAnimation.right
+      static var effectFade = UITableView.RowAnimation.fade
+      static var effectGap  = UITableView.RowAnimation.middle // TBD
+      static var slideUp    = UITableView.RowAnimation.top
+      static var slideDown  = UITableView.RowAnimation.bottom
+      static var slideLeft  = UITableView.RowAnimation.left
+      static var slideRight = UITableView.RowAnimation.right
     }
   #else
     public typealias UXTableViewCellStyle = UITableViewCellStyle
@@ -74,26 +74,23 @@
   public extension UITableView {
     // TBD: maybe we should hide those and just use the iOS versions
     
-    public func insertRows(at indexes: IndexSet,
-                           withAnimation ao : UITableView.RowAnimation
-                                            = .automatic)
+    func insertRows(at indexes: IndexSet,
+                    withAnimation ao : UITableView.RowAnimation = .automatic)
     {
       // fade, right, left, top, bottom, none, middle, automatic
       insertRows(at: indexes.map { IndexPath(row: $0, section: 0)}, with: ao)
     }
     
-    public func removeRows(at indexes: IndexSet,
-                           withAnimation ao : UITableView.RowAnimation
-                                            = .automatic)
+    func removeRows(at indexes: IndexSet,
+                    withAnimation ao : UITableView.RowAnimation = .automatic)
     {
       deleteRows(at: indexes.map { IndexPath(row: $0, section: 0)}, with: ao)
     }
     
-    public func reloadData(forRowIndexes rows: IndexSet,
-                           columnIndexes cols: IndexSet)
+    func reloadData(forRowIndexes rows: IndexSet, columnIndexes cols: IndexSet)
     {
       reloadRows(at: rows.map { IndexPath(row: $0, section: 0)},
                  with: .none) // This: flickrs too much: .automatic
     }
   }
-#endif
+#endif // !os(macOS)

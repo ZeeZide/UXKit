@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 #if !os(macOS)
   import UIKit
@@ -33,9 +33,9 @@
   public extension CGColor {
     
     // iOS has no CGColor(gray:alpha:)
-    public static func new(gray: CGFloat, alpha: CGFloat) -> CGColor {
+    static func new(gray: CGFloat, alpha: CGFloat) -> CGColor {
       return UIColor(red: gray, green: gray, blue: gray, alpha: alpha).cgColor
     }
     
   }
-#endif
+#endif // !os(macOS)

@@ -23,11 +23,11 @@ import Foundation
 
 public extension IndexSet {
   
-  public init(range: NSRange) {
+  init(range: NSRange) {
     self.init(integersIn: range.lowerBound..<range.upperBound)
   }
 
-  public static func setForRowsInPathes(_ ips: [ IndexPath ]) -> IndexSet {
+  static func setForRowsInPathes(_ ips: [ IndexPath ]) -> IndexSet {
     var set = IndexSet()
     for ip in ips { set.insert(ip[1] /* row */) }
     return set

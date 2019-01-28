@@ -10,9 +10,9 @@
 
 #if swift(>=4.0)
   public extension NSStackView {
-    public typealias Alignment        = NSLayoutConstraint.Attribute
-    public typealias UXAlignment      = NSLayoutConstraint.Attribute
-    public typealias Axis             = NSUserInterfaceLayoutOrientation
+    typealias Alignment        = NSLayoutConstraint.Attribute
+    typealias UXAlignment      = NSLayoutConstraint.Attribute
+    typealias Axis             = NSUserInterfaceLayoutOrientation
   }
 #else // Swift 3.2
   public extension NSLayoutConstraint {

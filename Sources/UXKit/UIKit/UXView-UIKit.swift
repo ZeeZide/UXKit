@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2018 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 #if !os(macOS)
   import UIKit
@@ -40,7 +40,7 @@
   public extension UIActivityIndicatorView {
     
     /// Use this instead of `start[stop]Animating` for AppKit compatibility.
-    public var isSpinning : Bool {
+    var isSpinning : Bool {
       set {
         guard newValue != isAnimating else { return }
         if newValue { startAnimating() }
@@ -55,7 +55,7 @@
   
   public extension UIButton {
     
-    public var title : String? {
+    var title : String? {
       set { setTitle(newValue, for: .normal) }
       get { return title(for: .normal)       }
     }
@@ -65,11 +65,10 @@
   public extension UISlider {
     // UISlider base value is a `Float`
     
-    public var intValue : Int32 { // yeah, it is Int32 in Cocoa :-)
+    var intValue : Int32 { // yeah, it is Int32 in Cocoa :-)
       set { value = Float(newValue) }
       get { return Int32(value) }
     }
     
   }
-#endif
-
+#endif // !os(macOS)

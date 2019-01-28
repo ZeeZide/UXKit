@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import class Cocoa.NSPasteboard
@@ -10,7 +10,7 @@
   
   public extension NSPasteboard {
     
-    public enum ux {
+    enum ux {
       /**
        * Only necessary for Swift 3 AppKit. Swift 4 AppKit and UIKit both
        * provide a `general` property (so you can just use
@@ -26,16 +26,16 @@
       }
     }
   }
-#else // iOS
+#else // !os(macOS)
   import class UIKit.UIPasteboard
   
   public typealias UXPasteboard = UIPasteboard
   
   public extension UIPasteboard {
     
-    public typealias PasteboardType = String
+    typealias PasteboardType = String
     
-    public enum ux {
+    enum ux {
       /**
        * Only necessary for Swift 3 AppKit. Swift 4 AppKit and UIKit both
        * provide a `general` property (so you can just use
@@ -54,8 +54,8 @@
      * specific pasteboards?
      */
     @discardableResult
-    public func clearContents() -> Int {
+    func clearContents() -> Int {
       return changeCount
     }
   }
-#endif // iOS
+#endif // !os(macOS)
