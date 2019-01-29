@@ -57,4 +57,5 @@ OTHER_SWIFT_FLAGS                      = -DXcode
 
 // This is a little lame (Xcode shouldn't tie the code to a version ..)
 //SWIFT_VERSION                          = 4.0
-SWIFT_VERSION                          = 4.2
+// SWIFT_VERSION                              = 4.2
+SWIFT_VERSION                              = 5.0
