@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import Cocoa
@@ -222,18 +222,17 @@
     override open func draw(_ dirtyRect: UXRect) {
       super.draw(dirtyRect)
       
-      NSGraphicsContext.saveGraphicsState() // TBD: required?
-      defer { NSGraphicsContext.restoreGraphicsState() }
+      inOwnContext { // TBD: required?
+        let bp = UXBezierPath()
+        bp.move(to: NSPoint(x: bounds.origin.x + style.padding,
+                            y: bounds.origin.y))
+        bp.line(to: NSPoint(x: bounds.size.width - style.padding,
+                            y: bounds.origin.y))
 
-      let bp = UXBezierPath()
-      bp.move(to: NSPoint(x: bounds.origin.x + style.padding,
-                          y: bounds.origin.y))
-      bp.line(to: NSPoint(x: bounds.size.width - style.padding,
-                          y: bounds.origin.y))
-
-      dividerColor.setStroke()
-      bp.lineWidth = 0.5
-      bp.stroke()
+        dividerColor.setStroke()
+        bp.lineWidth = 0.5
+        bp.stroke()
+      }
     }
     
     

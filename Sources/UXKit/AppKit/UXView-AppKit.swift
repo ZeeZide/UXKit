@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2018 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import Cocoa
@@ -110,5 +110,16 @@
       get { return alignment }
     }
     
+  }
+
+  public extension UXView {
+    
+    public func inOwnContext(execute: () -> ()) {
+      NSGraphicsContext.saveGraphicsState() // TBD: required?
+      defer { NSGraphicsContext.restoreGraphicsState() }
+      
+      execute()
+    }
+
   }
 #endif // os(macOS)
