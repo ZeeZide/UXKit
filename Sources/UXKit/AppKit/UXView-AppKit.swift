@@ -115,7 +115,7 @@
   public extension UXView {
     
     public func inOwnContext(execute: () -> ()) {
-      NSGraphicsContext.saveGraphicsState() // TBD: required?
+      NSGraphicsContext.saveGraphicsState()
       defer { NSGraphicsContext.restoreGraphicsState() }
       
       execute()
