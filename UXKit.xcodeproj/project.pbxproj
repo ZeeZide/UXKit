@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E82E9D42223A953A005A52AE /* UXViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82E9D41223A953A005A52AE /* UXViewType.swift */; };
+		E82E9D43223A953A005A52AE /* UXViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82E9D41223A953A005A52AE /* UXViewType.swift */; };
 		E86BD8542180B5C60087C3E4 /* UXAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86BD8532180B5C60087C3E4 /* UXAttributedString.swift */; };
 		E86BD8552180B5C60087C3E4 /* UXAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86BD8532180B5C60087C3E4 /* UXAttributedString.swift */; };
 		E8A937071FD7322800F180F8 /* UXGestureActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A937061FD7322800F180F8 /* UXGestureActions.swift */; };
@@ -53,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E82E9D41223A953A005A52AE /* UXViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXViewType.swift; sourceTree = "<group>"; };
 		E8460D751FBF12D2002CDC28 /* AppKitBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppKitBase.xcconfig; sourceTree = "<group>"; };
 		E8460D761FBF12D2002CDC28 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		E8460D771FBF12D2002CDC28 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 				E8A9B2531FBB326800C1063B /* UXViewController.swift */,
 				E8A937061FD7322800F180F8 /* UXGestureActions.swift */,
 				E86BD8532180B5C60087C3E4 /* UXAttributedString.swift */,
+				E82E9D41223A953A005A52AE /* UXViewType.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -298,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8A9B2901FBB352400C1063B /* UXObjectPresentingType.swift in Sources */,
+				E82E9D42223A953A005A52AE /* UXViewType.swift in Sources */,
 				E8A9B28F1FBB352400C1063B /* UXObjectControl.swift in Sources */,
 				E8A9B2921FBB352400C1063B /* UXViewController.swift in Sources */,
 				E8A9B2611FBB326800C1063B /* UXGraphics-AppKit.swift in Sources */,
@@ -335,6 +340,7 @@
 				E8A9B2951FBB352B00C1063B /* UXGestures-UIKit.swift in Sources */,
 				E8A9B2931FBB352B00C1063B /* UXCollectionView-UIKit.swift in Sources */,
 				E8A9B28D1FBB352300C1063B /* UXViewController.swift in Sources */,
+				E82E9D43223A953A005A52AE /* UXViewType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
