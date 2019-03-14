@@ -120,6 +120,14 @@
       
       execute()
     }
+    
+    func withDisabledAnimations(execute: () ->() ) {
+      CATransaction.begin()
+      CATransaction.setDisableActions(true)
+      defer { CATransaction.commit() }
+
+      execute()
+    }
 
   }
 #endif // os(macOS)
