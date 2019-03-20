@@ -10,7 +10,7 @@
  * This is useful when you want to derive another protocol from
  * UXView, but you can't ;-)
  */
-public protocol UXViewType {
+public protocol UXViewType : class {
 
   var frame  : UXRect { get set }
   var bounds : UXRect { get set }
