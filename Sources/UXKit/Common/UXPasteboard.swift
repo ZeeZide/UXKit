@@ -25,6 +25,19 @@
         #endif
       }
     }
+
+    func canReadItem(withDataConformingToType type: NSPasteboard.PasteboardType)
+         -> Bool
+    {
+      return canReadItem(withDataConformingToTypes: [ type.rawValue ])
+    }
+
+    func canReadItem(withDataConformingToTypes types:
+                        [ NSPasteboard.PasteboardType ]) -> Bool
+    {
+      // The default function does not work w/ PasteboardType ...
+      return canReadItem(withDataConformingToTypes: types.map { $0.rawValue })
+    }
   }
 #else // !os(macOS)
   import class UIKit.UIPasteboard
