@@ -6,6 +6,21 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		E85CBD30233F736A0065D1DB /* UXKit-AllPlatforms */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E85CBD33233F736A0065D1DB /* Build configuration list for PBXAggregateTarget "UXKit-AllPlatforms" */;
+			buildPhases = (
+			);
+			dependencies = (
+				E85CBD35233F73730065D1DB /* PBXTargetDependency */,
+				E85CBD37233F73730065D1DB /* PBXTargetDependency */,
+			);
+			name = "UXKit-AllPlatforms";
+			productName = "UXKit-AllPlatforms";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		E82E9D42223A953A005A52AE /* UXViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82E9D41223A953A005A52AE /* UXViewType.swift */; };
 		E82E9D43223A953A005A52AE /* UXViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82E9D41223A953A005A52AE /* UXViewType.swift */; };
@@ -41,6 +56,23 @@
 		E8A9B2991FBB352B00C1063B /* UXTargetAction-UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9B25B1FBB326800C1063B /* UXTargetAction-UIKit.swift */; };
 		E8A9B29A1FBB352B00C1063B /* UXView-UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9B25C1FBB326800C1063B /* UXView-UIKit.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E85CBD34233F73730065D1DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8A9B22E1FBB318700C1063B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8A9B2351FBB318700C1063B;
+			remoteInfo = "UXKit-AppKit";
+		};
+		E85CBD36233F73730065D1DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8A9B22E1FBB318700C1063B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8A9B27F1FBB351D00C1063B;
+			remoteInfo = "UXKit-UIKit";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E8A9B27E1FBB351D00C1063B /* CopyFiles */ = {
@@ -265,6 +297,10 @@
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "ZeeZide GmbH";
 				TargetAttributes = {
+					E85CBD30233F736A0065D1DB = {
+						CreatedOnToolsVersion = 11.1;
+						ProvisioningStyle = Automatic;
+					};
 					E8A9B2351FBB318700C1063B = {
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 1110;
@@ -272,7 +308,7 @@
 					};
 					E8A9B27F1FBB351D00C1063B = {
 						CreatedOnToolsVersion = 9.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -292,6 +328,7 @@
 			targets = (
 				E8A9B2351FBB318700C1063B /* UXKit-AppKit */,
 				E8A9B27F1FBB351D00C1063B /* UXKit-UIKit */,
+				E85CBD30233F736A0065D1DB /* UXKit-AllPlatforms */,
 			);
 		};
 /* End PBXProject section */
@@ -346,7 +383,36 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E85CBD35233F73730065D1DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8A9B2351FBB318700C1063B /* UXKit-AppKit */;
+			targetProxy = E85CBD34233F73730065D1DB /* PBXContainerItemProxy */;
+		};
+		E85CBD37233F73730065D1DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8A9B27F1FBB351D00C1063B /* UXKit-UIKit */;
+			targetProxy = E85CBD36233F73730065D1DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		E85CBD31233F736A0065D1DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E85CBD32233F736A0065D1DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		E8A9B23D1FBB318800C1063B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8460D771FBF12D2002CDC28 /* Debug.xcconfig */;
@@ -409,6 +475,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E85CBD33233F736A0065D1DB /* Build configuration list for PBXAggregateTarget "UXKit-AllPlatforms" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E85CBD31233F736A0065D1DB /* Debug */,
+				E85CBD32233F736A0065D1DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E8A9B2311FBB318700C1063B /* Build configuration list for PBXProject "UXKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
