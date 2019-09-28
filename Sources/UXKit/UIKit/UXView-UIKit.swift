@@ -74,7 +74,7 @@
 
   public extension UXView {
     
-    public func inOwnContext(execute: () -> ()) {
+    func inOwnContext(execute: () -> ()) {
       let context = UIGraphicsGetCurrentContext()
       context?.saveGState()
       defer { context?.restoreGState() }
