@@ -22,5 +22,5 @@ matrix:
 script:
     - set -o pipefail
     - xcodebuild -scheme UXKit-AppKit -configuration Debug   -target UXKit-AppKit | xcpretty
-    - xcodebuild -scheme UXKit-UIKit  -configuration Release -target UXKit-UIKit  | xcpretty
+    - xcodebuild -scheme UXKit-UIKit  -configuration Release -target UXKit-UIKit -destination generic/platform=iOS | xcpretty
 
