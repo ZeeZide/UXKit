@@ -10,6 +10,16 @@
    * This is a cell which can actually produce its subviews. Similar to
    * `UITableViewCell`.
    * Remember that `NSTableCellView` is more like a protocol.
+   *
+   * Use `UXTableViewCellType` when referring to a cell in an abstract way,
+   * and `UXTableViewCell` for this concrete type (or the UIKit version).
+   *
+   * This view lazily creates the backing views when you access them:
+   *
+   *     cell.textLabel?      .stringValue = "Hello!"
+   *     cell.detailTextLabel?.stringValue = "World"
+   *
+   * NOTE: This one doesn't actually support an image :-/
    */
   open class NSTableViewCell : NSTableCellView {
     // Note: UITableViewCell has many more views to show selection state,
@@ -19,7 +29,7 @@
     //       ZNeK?)
     //       Setting the color of the label, breaks things.
     
-    enum ViewSetup : Equatable {
+    private enum ViewSetup : Equatable {
       // TBD: this is kinda like UXTableViewCellStyle
       case none
       case image
@@ -69,8 +79,8 @@
       fatalError("\(#function) not implemented")
     }
 
-    var installedConstraintSetup = ViewSetup.none
-    var requiredContraintSetup : ViewSetup {
+    private var installedConstraintSetup = ViewSetup.none
+    private var requiredContraintSetup : ViewSetup {
       switch ( _textLabel, _detailTextLabel ) {
         case ( .none, .none ): return .none
         case ( .some, .none ): return .label
@@ -78,7 +88,7 @@
         case ( .none, .some ): return .labelDetail // no detail w/o main
       }
     }
-    var installedConstraints = [ NSLayoutConstraint ]()
+    private var installedConstraints = [ NSLayoutConstraint ]()
     
     override open func updateConstraints() {
       super.updateConstraints()
