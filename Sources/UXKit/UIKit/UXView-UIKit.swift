@@ -13,7 +13,7 @@
   public typealias UXSecureTextField  = UITextField
   public typealias UXScrollView       = UIScrollView
   public typealias UXCollectionView   = UICollectionView
-  public typealias UXSearchField      = UISearchBar
+  public typealias UXSearchField      = UISearchBar // TBD
   public typealias UXSpinner          = UIActivityIndicatorView
   public typealias UXProgressBar      = UIProgressView
   public typealias UXButton           = UIButton
