@@ -51,6 +51,12 @@
       }
     }
     
+    /// AppKit compatibility. Prefer: `hidesWhenStopped`.
+    /// Note: It's the other way around!
+    var isDisplayedWhenStopped : Bool {
+      set { hidesWhenStopped = !newValue }
+      get { return !hidesWhenStopped }
+    }
   }
   
   public extension UIButton {
