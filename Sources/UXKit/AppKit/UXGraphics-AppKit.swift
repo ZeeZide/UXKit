@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import Cocoa
@@ -42,6 +42,17 @@
       newRect.size.width  -= (insets.left + insets.right)
       newRect.size.height -= (insets.top  + insets.bottom)
       return newRect
+    }
+  }
+
+  public extension UXImage {
+    
+    static var applicationIconImage: UXImage? {
+      #if swift(>=4.2)
+        return UXImage(named: NSImage.applicationIconName)
+      #else
+        return UXImage(named: NSImage.Name.applicationIcon)
+      #endif
     }
   }
 #endif // os(macOS)
