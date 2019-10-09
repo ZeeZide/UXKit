@@ -162,6 +162,12 @@ TODO
 
 TODO
 
+### Alerts
+
+TODO
+- on AppKit buttons are selected by index
+- on UIKit actions are triggered by individual closures
+
 ### Who
 
 **UXKit** is brought to you by
