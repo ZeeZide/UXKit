@@ -113,6 +113,13 @@
       guard let ip = indexPathForSelectedRow else { return false }
       return ip.row == row
     }
+    
+    func deselectAll(_ sender: Any?) {
+      guard let ips = indexPathsForSelectedRows else { return }
+      for ip in ips {
+        deselectRow(at: ip, animated: false)
+      }
+    }
 
     func deselectRow(_ row: Int) {
       deselectRow(at: IndexPath(row: row, section: 0), animated: true)
