@@ -114,5 +114,26 @@
       return ip.row == row
     }
 
+    func deselectRow(_ row: Int) {
+      deselectRow(at: IndexPath(row: row, section: 0), animated: true)
+    }
+    
+    func selectRowIndexes(_ rows: IndexSet, byExtendingSelection extend: Bool) {
+      let oldSelection =
+        IndexSet((indexPathsForSelectedRows ?? []).lazy.map { $0.row })
+      
+      if !extend {
+        for oldRow in oldSelection {
+          guard !rows.contains(oldRow) else { continue }
+          deselectRow(at: IndexPath(row: oldRow, section: 0), animated: true)
+        }
+      }
+      
+      for newRow in rows {
+        guard !oldSelection.contains(newRow) else { continue }
+        selectRow(at: IndexPath(row: newRow, section: 0), animated: true,
+                  scrollPosition: .none)
+      }
+    }
   }
 #endif // !os(macOS)
