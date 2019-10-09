@@ -136,4 +136,15 @@
       }
     }
   }
+
+  public extension UITableView {
+    
+    /// AppKit compatibility version for `dequeueReusableCell`. The `owner` is
+    /// the owner of an eventual nib (don't) and not used here.
+    func makeView(withIdentifier id: UXUserInterfaceItemIdentifier, owner: Any?)
+         -> UITableViewCell?
+    {
+      return dequeueReusableCell(withIdentifier: id)
+    }
+  }
 #endif // !os(macOS)
