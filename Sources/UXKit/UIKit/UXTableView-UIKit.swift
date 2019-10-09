@@ -93,4 +93,26 @@
                  with: .none) // This: flickrs too much: .automatic
     }
   }
+
+  public extension UITableView {
+    
+    /// Careful: Unlike on macOS this only works for single section table views.
+    var selectedRow : Int { // macOS API
+      assert(dataSource?.numberOfSections?(in: self) < 2)
+      guard let ip = indexPathForSelectedRow else { return NSNotFound }
+      return ip.row
+    }
+    
+    var numberOfSelectedRows : Int {
+      return indexPathsForSelectedRows?.count ?? 0
+    }
+    
+    /// Careful: Unlike on macOS this only works for single section table views.
+    func isRowSelected(_ row: Int) -> Bool {
+      assert(dataSource?.numberOfSections?(in: self) < 2)
+      guard let ip = indexPathForSelectedRow else { return false }
+      return ip.row == row
+    }
+
+  }
 #endif // !os(macOS)
