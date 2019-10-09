@@ -98,7 +98,7 @@
     
     /// Careful: Unlike on macOS this only works for single section table views.
     var selectedRow : Int { // macOS API
-      assert(dataSource?.numberOfSections?(in: self) < 2)
+      assert((dataSource?.numberOfSections?(in: self) ?? 0) < 2)
       guard let ip = indexPathForSelectedRow else { return NSNotFound }
       return ip.row
     }
@@ -109,7 +109,7 @@
     
     /// Careful: Unlike on macOS this only works for single section table views.
     func isRowSelected(_ row: Int) -> Bool {
-      assert(dataSource?.numberOfSections?(in: self) < 2)
+      assert((dataSource?.numberOfSections?(in: self) ?? 0) < 2)
       guard let ip = indexPathForSelectedRow else { return false }
       return ip.row == row
     }
