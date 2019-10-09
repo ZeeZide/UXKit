@@ -49,4 +49,10 @@
       return UXImage(named: icon)
     }
   }
+
+  public extension Bundle {
+    func image(forResource name: UXImage.Name) -> UXImage? {
+      return UXImage(named: name, in: self, compatibleWith: nil)
+    }
+  }
 #endif // !os(macOS)
