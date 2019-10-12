@@ -85,4 +85,30 @@
                  columnIndexes: IndexSet(integer: 0))
     }
   }
+
+  public extension NSTableView {
+    
+    /// UIKit compat method for `makeView(withIdentifier:owner:)`. This one
+    /// passes `nil` as the owner.
+    func dequeueReusableCell(withIdentifier identifier: String)
+         -> UXView?
+    {
+      return makeView(withIdentifier: UXUserInterfaceItemIdentifier(identifier),
+                      owner: nil)
+    }
+
+    /// UIKit compat method for `makeView(withIdentifier:owner:)`. This one
+    /// passes `nil` as the owner. The indexPath is ignored and has no effect
+    /// on AppKit.
+    /// Note: Raises a fatalError if the cell could not be constructed!
+    func dequeueReusableCell(withIdentifier identifier: String,
+                             for indexPath: IndexPath) -> UXView
+    {
+      guard let v = dequeueReusableCell(withIdentifier: identifier) else {
+        fatalError("could not construct cell for \(identifier)")
+      }
+      return v
+    }
+
+  }
 #endif // os(macOS)

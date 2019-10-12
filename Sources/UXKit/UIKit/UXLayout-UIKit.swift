@@ -3,10 +3,11 @@
 //
 //  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
-#if !os(macOS)
+#if os(iOS)
   import UIKit
 
   public typealias UXLayoutConstraint = NSLayoutConstraint
+  public typealias UXLayoutGuide      = UILayoutGuide
 
   #if swift(>=4.2)
     public extension UIStackView {

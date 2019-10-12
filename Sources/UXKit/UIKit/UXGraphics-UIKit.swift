@@ -20,14 +20,15 @@
   public typealias UXEdgeInsets       = UIEdgeInsets
 
   #if swift(>=4.2)
-    public func UXEdgeInsetsMake(_ top: CGFloat, _ left: CGFloat,
-                                 _ bottom: CGFloat, _ right: CGFloat)
+    @inlinable
+    public func UXEdgeInsetsMake(_ top    : CGFloat, _ left  : CGFloat,
+                                 _ bottom : CGFloat, _ right : CGFloat)
                 -> UXEdgeInsets
     {
       return UXEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
   #else
-    public let       UXEdgeInsetsMake   = UIEdgeInsetsMake
+    public let  UXEdgeInsetsMake = UIEdgeInsetsMake
   #endif
   
   public extension CGColor {
@@ -36,6 +37,22 @@
     static func new(gray: CGFloat, alpha: CGFloat) -> CGColor {
       return UIColor(red: gray, green: gray, blue: gray, alpha: alpha).cgColor
     }
+  }
+
+  public extension UXImage {
     
+    typealias Name = String // use on older macOS bindings
+    
+    static var applicationIconImage: UXImage? {
+      guard let icon = (Bundle.main.infoDictionary?["CFBundleIconFiles"]
+                       as? [ String ])?.first else { return nil }
+      return UXImage(named: icon)
+    }
+  }
+
+  public extension Bundle {
+    func image(forResource name: UXImage.Name) -> UXImage? {
+      return UXImage(named: name, in: self, compatibleWith: nil)
+    }
   }
 #endif // !os(macOS)

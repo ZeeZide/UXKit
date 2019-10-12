@@ -93,4 +93,65 @@
                  with: .none) // This: flickrs too much: .automatic
     }
   }
+
+  public extension UITableView {
+    
+    /// Careful: Unlike on macOS this only works for single section table views.
+    var selectedRow : Int { // macOS API
+      assert((dataSource?.numberOfSections?(in: self) ?? 0) < 2)
+      guard let ip = indexPathForSelectedRow else { return NSNotFound }
+      return ip.row
+    }
+    
+    var numberOfSelectedRows : Int {
+      return indexPathsForSelectedRows?.count ?? 0
+    }
+    
+    /// Careful: Unlike on macOS this only works for single section table views.
+    func isRowSelected(_ row: Int) -> Bool {
+      assert((dataSource?.numberOfSections?(in: self) ?? 0) < 2)
+      guard let ip = indexPathForSelectedRow else { return false }
+      return ip.row == row
+    }
+    
+    func deselectAll(_ sender: Any?) {
+      guard let ips = indexPathsForSelectedRows else { return }
+      for ip in ips {
+        deselectRow(at: ip, animated: false)
+      }
+    }
+
+    func deselectRow(_ row: Int) {
+      deselectRow(at: IndexPath(row: row, section: 0), animated: true)
+    }
+    
+    func selectRowIndexes(_ rows: IndexSet, byExtendingSelection extend: Bool) {
+      let oldSelection =
+        IndexSet((indexPathsForSelectedRows ?? []).lazy.map { $0.row })
+      
+      if !extend {
+        for oldRow in oldSelection {
+          guard !rows.contains(oldRow) else { continue }
+          deselectRow(at: IndexPath(row: oldRow, section: 0), animated: true)
+        }
+      }
+      
+      for newRow in rows {
+        guard !oldSelection.contains(newRow) else { continue }
+        selectRow(at: IndexPath(row: newRow, section: 0), animated: true,
+                  scrollPosition: .none)
+      }
+    }
+  }
+
+  public extension UITableView {
+    
+    /// AppKit compatibility version for `dequeueReusableCell`. The `owner` is
+    /// the owner of an eventual nib (don't) and not used here.
+    func makeView(withIdentifier id: UXUserInterfaceItemIdentifier, owner: Any?)
+         -> UITableViewCell?
+    {
+      return dequeueReusableCell(withIdentifier: id)
+    }
+  }
 #endif // !os(macOS)

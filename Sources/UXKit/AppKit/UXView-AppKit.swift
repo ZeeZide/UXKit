@@ -112,6 +112,14 @@
     
   }
 
+  public extension UXSpinner {
+    /// Use this instead of `isDisplayedWhenStopped` for UIKit compatibility.
+    var hidesWhenStopped : Bool {
+      set { isDisplayedWhenStopped = !newValue }
+      get { return !isDisplayedWhenStopped }
+    }
+  }
+
   public extension UXView {
     
     func inOwnContext(execute: () -> ()) {

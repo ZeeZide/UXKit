@@ -130,6 +130,9 @@ TODO
 - sectioned list view vs table view vs outline view
 - source lists
 - integrate the `UXTableViewController` into UXKit
+- row indexing is different, it includes sections on AppKit, but not on iOS
+  - this also affects things like selectedRow!
+
 
 ### Collection Views
 
@@ -158,6 +161,12 @@ TODO
 ### Gestures
 
 TODO
+
+### Alerts
+
+TODO
+- on AppKit buttons are selected by index
+- on UIKit actions are triggered by individual closures
 
 ### Who
 

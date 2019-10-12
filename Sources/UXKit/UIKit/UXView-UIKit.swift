@@ -13,7 +13,7 @@
   public typealias UXSecureTextField  = UITextField
   public typealias UXScrollView       = UIScrollView
   public typealias UXCollectionView   = UICollectionView
-  public typealias UXSearchField      = UISearchBar
+  public typealias UXSearchField      = UISearchBar // TBD
   public typealias UXSpinner          = UIActivityIndicatorView
   public typealias UXProgressBar      = UIProgressView
   public typealias UXButton           = UIButton
@@ -51,6 +51,12 @@
       }
     }
     
+    /// AppKit compatibility. Prefer: `hidesWhenStopped`.
+    /// Note: It's the other way around!
+    var isDisplayedWhenStopped : Bool {
+      set { hidesWhenStopped = !newValue }
+      get { return !hidesWhenStopped }
+    }
   }
   
   public extension UIButton {
