@@ -19,17 +19,13 @@
   
   public typealias UXEdgeInsets       = UIEdgeInsets
 
-  #if swift(>=4.2)
-    @inlinable
-    public func UXEdgeInsetsMake(_ top    : CGFloat, _ left  : CGFloat,
-                                 _ bottom : CGFloat, _ right : CGFloat)
-                -> UXEdgeInsets
-    {
-      return UXEdgeInsets(top: top, left: left, bottom: bottom, right: right)
-    }
-  #else
-    public let  UXEdgeInsetsMake = UIEdgeInsetsMake
-  #endif
+  @inlinable
+  public func UXEdgeInsetsMake(_ top    : CGFloat, _ left  : CGFloat,
+                               _ bottom : CGFloat, _ right : CGFloat)
+              -> UXEdgeInsets
+  {
+    return UXEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+  }
   
   public extension CGColor {
     
