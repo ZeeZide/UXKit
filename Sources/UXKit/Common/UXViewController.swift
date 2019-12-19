@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
 //
 
 import Foundation
@@ -36,6 +36,7 @@ import Foundation
   func uxAddChild(_ childViewController: UXViewController)
   func uxRemoveFromParent()
   var  uxChildren : [ UXViewController ] { get }
+  var  uxParent   : UXViewController?    { get }
 }
 
 #if os(macOS)
@@ -72,17 +73,8 @@ extension UXViewController : UXViewControllerType {
   // Note: The ux prefixes are necessary due to Swift compiler madness where
   //       it gets confused what uses selectors in #ifs and when and how. Sigh.
   
-  #if swift(>=4.2)
-    public func uxAddChild(_ vc: UXViewController) { addChild(vc) }
-    public var  uxChildren : [ UXViewController ]  { return children }
-    public func uxRemoveFromParent() { removeFromParent() }
-  #else
-    public func uxAddChild(_ vc: UXViewController) {
-      addChildViewController(vc)
-    }
-    public var uxChildren : [ UXViewController ] {
-      return childViewControllers
-    }
-    public func uxRemoveFromParent() { removeFromParentViewController() }
-  #endif
+  public func uxAddChild(_ vc: UXViewController) { addChild(vc) }
+  public var  uxChildren : [ UXViewController ]  { return children }
+  public func uxRemoveFromParent() { removeFromParent() }
+  public var  uxParent   : UXViewController?    { return parent }
 }

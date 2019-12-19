@@ -24,13 +24,6 @@
    */
   public typealias UXTableViewCellType  = UITableViewCell
 
-  #if swift(>=4.2)
-  #else
-    public extension UITableViewCell {
-      public typealias EditingStyle = UITableViewCellEditingStyle
-    }
-  #endif
-  
   /**
    * A concrete view which you can use in a view datasource. It provides an
    * image, label, detail-label, and a set of different styles.
@@ -40,31 +33,15 @@
    */
   public typealias UXTableViewCell      = UITableViewCell // same on iOS
 
-  #if swift(>=4.2)
-    public typealias UXTableViewCellStyle = UITableViewCell.CellStyle
-    public extension UITableView.RowAnimation {
-      static var effectFade = UITableView.RowAnimation.fade
-      static var effectGap  = UITableView.RowAnimation.middle // TBD
-      static var slideUp    = UITableView.RowAnimation.top
-      static var slideDown  = UITableView.RowAnimation.bottom
-      static var slideLeft  = UITableView.RowAnimation.left
-      static var slideRight = UITableView.RowAnimation.right
-    }
-  #else
-    public typealias UXTableViewCellStyle = UITableViewCellStyle
-    public extension UITableView {
-      public typealias CellStyle    = UITableViewCellStyle
-      public typealias RowAnimation = UITableViewRowAnimation
-    }
-    public extension UITableViewRowAnimation {
-      public static var effectFade = UITableViewRowAnimation.fade
-      public static var effectGap  = UITableViewRowAnimation.middle // TBD
-      public static var slideUp    = UITableViewRowAnimation.top
-      public static var slideDown  = UITableViewRowAnimation.bottom
-      public static var slideLeft  = UITableViewRowAnimation.left
-      public static var slideRight = UITableViewRowAnimation.right
-    }
-  #endif
+  public typealias UXTableViewCellStyle = UITableViewCell.CellStyle
+  public extension UITableView.RowAnimation {
+    static var effectFade = UITableView.RowAnimation.fade
+    static var effectGap  = UITableView.RowAnimation.middle // TBD
+    static var slideUp    = UITableView.RowAnimation.top
+    static var slideDown  = UITableView.RowAnimation.bottom
+    static var slideLeft  = UITableView.RowAnimation.left
+    static var slideRight = UITableView.RowAnimation.right
+  }
 
   public protocol UXTableViewCellInit : class {
     init(style: UXTableViewCellStyle, reuseIdentifier: String?)

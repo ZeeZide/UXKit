@@ -48,11 +48,7 @@
   public extension UXImage {
     
     static var applicationIconImage: UXImage? {
-      #if swift(>=4.2)
-        return UXImage(named: NSImage.applicationIconName)
-      #else
-        return UXImage(named: NSImage.Name.applicationIcon)
-      #endif
+      return UXImage(named: NSImage.applicationIconName)
     }
   }
 #endif // os(macOS)
