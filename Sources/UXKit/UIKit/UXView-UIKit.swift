@@ -8,6 +8,7 @@
 
   public typealias UXView             = UIView
   public typealias UXResponder        = UIResponder
+  public typealias UXControl          = UIControl
   public typealias UXLabel            = UILabel
   public typealias UXTextField        = UITextField
   public typealias UXSecureTextField  = UITextField
