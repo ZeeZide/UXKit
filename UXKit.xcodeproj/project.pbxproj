@@ -55,6 +55,8 @@
 		E8A9B2981FBB352B00C1063B /* UXTableView-UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9B25A1FBB326800C1063B /* UXTableView-UIKit.swift */; };
 		E8A9B2991FBB352B00C1063B /* UXTargetAction-UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9B25B1FBB326800C1063B /* UXTargetAction-UIKit.swift */; };
 		E8A9B29A1FBB352B00C1063B /* UXView-UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9B25C1FBB326800C1063B /* UXView-UIKit.swift */; };
+		E8BF4DC5247025F30055AA53 /* UXTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF4DC4247025F20055AA53 /* UXTextView.swift */; };
+		E8BF4DC6247025F30055AA53 /* UXTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF4DC4247025F20055AA53 /* UXTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,7 @@
 		E8A9B25C1FBB326800C1063B /* UXView-UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UXView-UIKit.swift"; sourceTree = "<group>"; };
 		E8A9B2801FBB351D00C1063B /* libUXKit-UIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libUXKit-UIKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A9B29B1FBB381000C1063B /* README.md */ = {isa = PBXFileReference; explicitFileType = text; path = README.md; sourceTree = "<group>"; };
+		E8BF4DC4247025F20055AA53 /* UXTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +225,7 @@
 				E8A937061FD7322800F180F8 /* UXGestureActions.swift */,
 				E82E9D41223A953A005A52AE /* UXViewType.swift */,
 				E8080ECE234E43060022D71A /* UXAlert.swift */,
+				E8BF4DC4247025F20055AA53 /* UXTextView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -348,6 +352,7 @@
 				E8080ECF234E43060022D71A /* UXAlert.swift in Sources */,
 				E8A9B25E1FBB326800C1063B /* UXCollectionView-AppKit.swift in Sources */,
 				E8A9B2621FBB326800C1063B /* UXLayout-AppKit.swift in Sources */,
+				E8BF4DC5247025F30055AA53 /* UXTextView.swift in Sources */,
 				E8A9B25D1FBB326800C1063B /* NSTableViewCell.swift in Sources */,
 				E8A9B28E1FBB352400C1063B /* UXIndexPath.swift in Sources */,
 				E8A9B2601FBB326800C1063B /* UXGestures-AppKit.swift in Sources */,
@@ -371,6 +376,7 @@
 				E8A9B2991FBB352B00C1063B /* UXTargetAction-UIKit.swift in Sources */,
 				E8A9B29A1FBB352B00C1063B /* UXView-UIKit.swift in Sources */,
 				E8A937081FD7322800F180F8 /* UXGestureActions.swift in Sources */,
+				E8BF4DC6247025F30055AA53 /* UXTextView.swift in Sources */,
 				E8A9B2941FBB352B00C1063B /* UXFont-UIKit.swift in Sources */,
 				E8A9B28A1FBB352300C1063B /* UXObjectControl.swift in Sources */,
 				E8A9B2951FBB352B00C1063B /* UXGestures-UIKit.swift in Sources */,
