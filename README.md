@@ -9,7 +9,8 @@
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
 ![Travis](https://travis-ci.org/ZeeZide/UXKit.svg?branch=develop)
 
-There is a rumor that something called *UXKit* exists as part of the Apple Photos application, enabling the same codebase to run on macOS and iOS.
+There is a rumor that something called *UXKit* exists as part of the Apple
+Photos application, enabling the same codebase to run on macOS and iOS.
 Though the
 [article](https://medium.com/@guilhermerambo/why-uikit-for-macos-is-important-ff4e74a82cf0)
 is probably incorrect in that this is an UIKit implementation for macOS:
@@ -174,4 +175,3 @@ TODO
 [ZeeZide](http://zeezide.de).
 We like feedback, GitHub stars, cool contract work,
 presumably any form of praise you can think of.
-
