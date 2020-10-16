@@ -1,10 +1,8 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2020 ZeeZide GmbH. All rights reserved.
 //
-
-import Foundation
 
 /**
  * A common protocol for "view controllers". Note that this itself is
@@ -65,7 +63,7 @@ import Foundation
   }
 #endif // end: iOS
 
-extension UXViewController : UXViewControllerType {
+@objc extension UXViewController : UXViewControllerType {
   
   public var uxViewController : UXViewController { return self }
   public var rootView         : UXView           { return view }
@@ -75,6 +73,6 @@ extension UXViewController : UXViewControllerType {
   
   public func uxAddChild(_ vc: UXViewController) { addChild(vc) }
   public var  uxChildren : [ UXViewController ]  { return children }
-  public func uxRemoveFromParent() { removeFromParent() }
-  public var  uxParent   : UXViewController?    { return parent }
+  public func uxRemoveFromParent()               { removeFromParent() }
+  public var  uxParent   : UXViewController?     { return parent }
 }
