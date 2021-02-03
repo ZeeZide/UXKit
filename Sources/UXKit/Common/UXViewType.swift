@@ -3,14 +3,14 @@
 //  UXKit
 //
 //  Created by Helge Heß on 14.03.19.
-//  Copyright © 2019 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2019-2021 ZeeZide GmbH. All rights reserved.
 //
 
 /**
  * This is useful when you want to derive another protocol from
  * UXView, but you can't ;-)
  */
-public protocol UXViewType : class {
+public protocol UXViewType : AnyObject {
 
   var frame  : UXRect { get set }
   var bounds : UXRect { get set }

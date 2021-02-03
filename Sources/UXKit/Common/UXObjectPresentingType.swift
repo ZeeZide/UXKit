@@ -1,11 +1,11 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2021 ZeeZide GmbH. All rights reserved.
 //
 import Foundation
 
-@objc public protocol UXObjectPresentingType : class {
+@objc public protocol UXObjectPresentingType : AnyObject {
   
   @objc var representedObject : Any? { get set }
   

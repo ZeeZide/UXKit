@@ -1,11 +1,11 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2021 ZeeZide GmbH. All rights reserved.
 //
 import Foundation
 
-@objc public protocol UXObjectControl : class {
+@objc public protocol UXObjectControl : AnyObject {
   var formatter   : Formatter? { get set }
   var objectValue : Any?       { get set }
 }

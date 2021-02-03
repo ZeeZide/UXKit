@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2021 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import Cocoa
@@ -41,7 +41,7 @@
     case subtitle
   }
 
-  public protocol UXTableViewCellInit : class {
+  public protocol UXTableViewCellInit : AnyObject {
     init(style: UXTableViewCellStyle, reuseIdentifier: String?)
     func prepareForReuse()
   }
