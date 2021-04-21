@@ -1,12 +1,14 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2021 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import Cocoa
   
   public typealias UXLayoutConstraint = NSLayoutConstraint
+  
+  @available(OSX 10.11, *)
   public typealias UXLayoutGuide      = NSLayoutGuide
 
 #if swift(>=4.0)
