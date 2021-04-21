@@ -41,12 +41,14 @@
   import Cocoa
 
   public typealias UXViewController = NSViewController
+  public typealias UXDocument       = NSDocument
 #else // iOS
   import UIKit
   
   fileprivate var uivcID : UInt8 = 42
 
   public typealias UXViewController = UIViewController
+  public typealias UXDocument       = UIDocument
 
   extension UIViewController : UXUserInterfaceItemIdentification {
     
