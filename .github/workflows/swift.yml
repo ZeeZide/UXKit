@@ -20,8 +20,6 @@ jobs:
         run: swift build -c debug
       - name: Build Swift Release Package
         run: swift build -c release
-      - name: Run Tests
-        run: swift test
   iOS:
     runs-on: macos-latest
     steps:
@@ -31,8 +29,10 @@ jobs:
           xcode-version: 12.2
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - name: Prerequisites
+        run: gem install xcpretty
       - name: Build
-        run: xcodebuild -scheme UXKit-UIKit build
+        run: set -o pipefail; xcodebuild -scheme UXKit-UIKit build | xcpretty --color
   NeXTstep:
     runs-on: macos-latest
     steps:
@@ -42,5 +42,7 @@ jobs:
           xcode-version: 12.2
       - name: Checkout Repository
         uses: actions/checkout@v2
+      - name: Prerequisites
+        run: gem install xcpretty
       - name: Build
-        run: xcodebuild -scheme UXKit-AppKit build
+        run: set -o pipefail; xcodebuild -scheme UXKit-AppKit build | xcpretty --color
