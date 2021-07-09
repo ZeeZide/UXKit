@@ -26,6 +26,7 @@
 		E8080ED0234E43060022D71A /* UXAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8080ECE234E43060022D71A /* UXAlert.swift */; };
 		E82E9D42223A953A005A52AE /* UXViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82E9D41223A953A005A52AE /* UXViewType.swift */; };
 		E82E9D43223A953A005A52AE /* UXViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82E9D41223A953A005A52AE /* UXViewType.swift */; };
+		E83935322698823E00272DA7 /* NSSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83935312698823E00272DA7 /* NSSound.swift */; };
 		E8A937071FD7322800F180F8 /* UXGestureActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A937061FD7322800F180F8 /* UXGestureActions.swift */; };
 		E8A937081FD7322800F180F8 /* UXGestureActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A937061FD7322800F180F8 /* UXGestureActions.swift */; };
 		E8A9B25D1FBB326800C1063B /* NSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9B2451FBB326800C1063B /* NSTableViewCell.swift */; };
@@ -91,6 +92,7 @@
 /* Begin PBXFileReference section */
 		E8080ECE234E43060022D71A /* UXAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXAlert.swift; sourceTree = "<group>"; };
 		E82E9D41223A953A005A52AE /* UXViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXViewType.swift; sourceTree = "<group>"; };
+		E83935312698823E00272DA7 /* NSSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSound.swift; sourceTree = "<group>"; };
 		E8460D751FBF12D2002CDC28 /* AppKitBase.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppKitBase.xcconfig; sourceTree = "<group>"; };
 		E8460D761FBF12D2002CDC28 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		E8460D771FBF12D2002CDC28 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				E8A9B25A1FBB326800C1063B /* UXTableView-UIKit.swift */,
 				E8A9B25B1FBB326800C1063B /* UXTargetAction-UIKit.swift */,
 				E8A9B25C1FBB326800C1063B /* UXView-UIKit.swift */,
+				E83935312698823E00272DA7 /* NSSound.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			files = (
 				E8A9B2961FBB352B00C1063B /* UXGraphics-UIKit.swift in Sources */,
 				E8A9B2981FBB352B00C1063B /* UXTableView-UIKit.swift in Sources */,
+				E83935322698823E00272DA7 /* NSSound.swift in Sources */,
 				E8A9B28B1FBB352300C1063B /* UXObjectPresentingType.swift in Sources */,
 				E8A9B2891FBB352300C1063B /* UXIndexPath.swift in Sources */,
 				E8A9B28C1FBB352300C1063B /* UXPasteboard.swift in Sources */,
