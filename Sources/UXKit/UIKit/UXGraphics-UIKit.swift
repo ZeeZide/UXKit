@@ -15,6 +15,7 @@
   public typealias UXRect             = CGRect
   public typealias UXPoint            = CGPoint
   public typealias UXSize             = CGSize
+  public typealias UXRectCorner       = UIRectCorner
 
   public typealias UXImage            = UIImage
   
@@ -46,6 +47,17 @@
       guard let icon = (Bundle.main.infoDictionary?["CFBundleIconFiles"]
                        as? [ String ])?.first else { return nil }
       return UXImage(named: icon)
+    }
+    
+    static func image(withSize size: CGSize, andContent drawContent: () -> Void) -> UXImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 1.0);
+        
+        drawContent()
+        
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return result!
     }
   }
 

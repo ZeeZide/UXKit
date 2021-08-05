@@ -50,5 +50,20 @@
     static var applicationIconImage: UXImage? {
       return UXImage(named: NSImage.applicationIconName)
     }
+    
+    static func image(withSize size: CGSize, andContent drawContent: () -> Void) -> UXImage {
+        let textImage = NSImage(size: size)
+        if let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(size.width), pixelsHigh: Int(size.height), bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: .calibratedRGB, bytesPerRow: 0, bitsPerPixel: 0) {
+            textImage.addRepresentation(rep)
+            NSGraphicsContext.saveGraphicsState()
+            NSGraphicsContext.current = NSGraphicsContext.init(bitmapImageRep: rep)
+        }
+        
+        drawContent()
+        
+        NSGraphicsContext.restoreGraphicsState()
+            
+        return textImage
+    }
   }
 #endif // os(macOS)
