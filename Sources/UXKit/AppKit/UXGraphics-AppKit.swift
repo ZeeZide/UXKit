@@ -114,7 +114,7 @@ public extension NSBezierPath {
                 }
             }
 
-            if !didClosePath { path.closeSubpath() }
+            //if !didClosePath { path.closeSubpath() }
         }
 
         points.deallocate()
