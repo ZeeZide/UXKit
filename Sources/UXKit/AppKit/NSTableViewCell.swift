@@ -56,6 +56,53 @@
     }
     private let style = Style()
     
+    // provided for compatibility, though not really used.
+    public enum SelectionStyle : Int {
+      case none = 0
+      case blue = 1
+      case gray = 2
+      @available(iOS 7.0, *)
+      case `default` = 3
+    }
+
+    public var selectionStyle : SelectionStyle = .default
+
+    // provided for compatibility, though not really used.
+    public enum AccessoryType : Int {
+        case none = 0 // don't show any accessory view
+        case disclosureIndicator = 1 // regular chevron. doesn't track
+        case detailDisclosureButton = 2 // info button w/ chevron. tracks
+        case checkmark = 3 // checkmark. doesn't track
+        
+        @available(iOS 7.0, *)
+        case detailButton = 4 // info button. tracks
+    }
+
+    public var accessoryType : AccessoryType = .none
+
+    
+    // provided for compatibility, though not really used.
+    public enum EditingStyle : Int {
+        case none = 0
+        case delete = 1
+        case insert = 2
+    }
+
+    // These are provided for UIKit compatibility.  Not actively used (yet).
+    public var backgroundColor : UXColor {
+        get {
+            if let col = self.layer?.backgroundColor {
+                return UXColor(cgColor: col)!
+            }
+            
+            return UXColor.textBackgroundColor
+        }
+        
+        set {
+            self.layer?.backgroundColor = newValue.cgColor
+        }
+    }
+
     public init(style: UXTableViewCellStyle, reuseIdentifier id: String?) {
       /* TODO: SETUP:
        default:  just label, no detail
@@ -224,7 +271,6 @@
       }
     }
 
-    
     // MARK: - Separator line (TBD: should we draw this?)
     
     open var dividerColor : UXColor { return UXColor.lightGray }

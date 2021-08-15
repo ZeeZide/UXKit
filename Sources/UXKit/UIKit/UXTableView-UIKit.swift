@@ -33,6 +33,9 @@
    */
   public typealias UXTableViewCell      = UITableViewCell // same on iOS
 
+  public typealias UXTableViewDelegate = UITableViewDelegate
+  public typealias UXTableViewDataSource = UITableViewDataSource
+
   public typealias UXTableViewCellStyle = UITableViewCell.CellStyle
   public extension UITableView.RowAnimation {
     static var effectFade = UITableView.RowAnimation.fade

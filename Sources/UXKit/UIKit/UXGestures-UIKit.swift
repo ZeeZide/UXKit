@@ -7,6 +7,7 @@
   import UIKit
 
   public typealias UXGestureRecognizer         = UIGestureRecognizer
+  public typealias UXGestureRecognizerDelegate = UIGestureRecognizerDelegate
   public typealias UXRotationGestureRecognizer = UIRotationGestureRecognizer
   public typealias UXPanGestureRecognizer      = UIPanGestureRecognizer
   public typealias UXTapGestureRecognizer      = UITapGestureRecognizer

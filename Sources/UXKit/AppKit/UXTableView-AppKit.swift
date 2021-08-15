@@ -32,7 +32,10 @@
    * an own class for that (`NSTableViewCell`).
    */
   public typealias UXTableViewCell      = NSTableViewCell // Yes! (own)
-  
+
+  public typealias UXTableViewDelegate = NSTableViewDelegate
+  public typealias UXTableViewDataSource = NSTableViewDataSource
+
   public enum      UXTableViewCellStyle {
     // Hm. Not really used for now.
     case `default`
@@ -84,6 +87,10 @@
       reloadData(forRowIndexes: IndexSet.setForRowsInPathes(indexes),
                  columnIndexes: IndexSet(integer: 0))
     }
+    
+    func numberOfRows(inSection: Int) -> Int {
+        return self.numberOfRows
+    }
   }
 
   public extension NSTableView {
@@ -91,10 +98,10 @@
     /// UIKit compat method for `makeView(withIdentifier:owner:)`. This one
     /// passes `nil` as the owner.
     func dequeueReusableCell(withIdentifier identifier: String)
-         -> UXView?
+         -> UXTableViewCell?
     {
       return makeView(withIdentifier: UXUserInterfaceItemIdentifier(identifier),
-                      owner: nil)
+                      owner: nil) as? UXTableViewCell
     }
 
     /// UIKit compat method for `makeView(withIdentifier:owner:)`. This one
@@ -102,7 +109,7 @@
     /// on AppKit.
     /// Note: Raises a fatalError if the cell could not be constructed!
     func dequeueReusableCell(withIdentifier identifier: String,
-                             for indexPath: IndexPath) -> UXView
+                             for indexPath: IndexPath) -> UXTableViewCell
     {
       guard let v = dequeueReusableCell(withIdentifier: identifier) else {
         fatalError("could not construct cell for \(identifier)")

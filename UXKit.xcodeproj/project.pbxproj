@@ -442,6 +442,7 @@
 			baseConfigurationReference = E8460D781FBF12D2002CDC28 /* MacStaticLib.xcconfig */;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_MODULE_NAME = UXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -452,6 +453,7 @@
 			baseConfigurationReference = E8460D781FBF12D2002CDC28 /* MacStaticLib.xcconfig */;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_MODULE_NAME = UXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -16,6 +16,8 @@
   public typealias UXPoint            = CGPoint
   public typealias UXSize             = CGSize
   public typealias UXRectCorner       = UIRectCorner
+  public typealias UXEvent            = UIEvent
+  public typealias UXTouch            = UITouch
 
   public typealias UXImage            = UIImage
   
@@ -49,6 +51,11 @@
       return UXImage(named: icon)
     }
     
+    /// Returns an image of the specified size, allowing the caller to provide a draw function that draws into the "current" graphics context.
+    /// - Parameters:
+    ///   - size: The size of the image
+    ///   - drawContent: A block responsible for drawing into the image.
+    /// - Returns: The image (which may be blank).
     static func image(withSize size: CGSize, andContent drawContent: () -> Void) -> UXImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 1.0);
         

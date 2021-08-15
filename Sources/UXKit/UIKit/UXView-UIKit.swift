@@ -24,7 +24,9 @@
   public typealias UXCheckBox         = UISwitch
   public typealias UXImageView        = UIImageView
   public typealias UXSlider           = UISlider
-  
+  public typealias UXAccessibility    = UIAccessibility
+  public typealias UXAccessibilityElement = UIAccessibilityElement
+  public typealias UXTextFieldDelegate = UITextFieldDelegate
   
   // MARK: - UXUserInterfaceItemIdentification
   
