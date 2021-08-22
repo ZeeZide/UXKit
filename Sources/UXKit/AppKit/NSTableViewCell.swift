@@ -127,7 +127,7 @@
     }
 
     private var installedConstraintSetup = ViewSetup.none
-    private var requiredContraintSetup : ViewSetup {
+    private var requiredConstraintSetup : ViewSetup {
       switch ( _textLabel, _detailTextLabel ) {
         case ( .none, .none ): return .none
         case ( .some, .none ): return .label
@@ -140,7 +140,7 @@
     override open func updateConstraints() {
       super.updateConstraints()
       
-      let required = requiredContraintSetup
+      let required = requiredConstraintSetup
       guard installedConstraintSetup != required else { return }
       // Swift.print("from \(installedConstraintSetup) to \(required)")
       
@@ -216,6 +216,8 @@
           label.target     = self // VC
           label.action     = #selector(didEditTableRow(_:))
         #endif
+        
+        label.sizeToFit()
         
         addSubview(label)
         #if false // this is funny, setting this overrides the font
@@ -295,7 +297,7 @@
     // MARK: - Label Factory
     
     open func makeLabel() -> UXLabel {
-      let v = NSTextField(frame: UXRect())
+      let v = UXLabel(frame: UXRect())
       v.translatesAutoresizingMaskIntoConstraints = false
       
       /* configure as label */
