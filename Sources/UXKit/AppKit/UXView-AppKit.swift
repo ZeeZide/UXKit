@@ -198,6 +198,14 @@
     }
   }
 
+open class VerticallyCenteredTextFieldCell: NSTextFieldCell {
+    open override func drawingRect(forBounds rect: NSRect) -> NSRect {
+        let rect = super.drawingRect(forBounds: rect)
+        let size = cellSize(forBounds: rect)
+        return NSRect(x: rect.minX, y: rect.minY + (rect.height - size.height) / 2, width: rect.width, height: size.height)
+    }
+}
+
   public extension UXSpinner {
     /// Use this instead of `isDisplayedWhenStopped` for UIKit compatibility.
     var hidesWhenStopped : Bool {

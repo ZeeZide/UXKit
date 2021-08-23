@@ -217,8 +217,6 @@
           label.action     = #selector(didEditTableRow(_:))
         #endif
         
-        label.sizeToFit()
-        
         addSubview(label)
         #if false // this is funny, setting this overrides the font
           self.textField = label // this is weak!
@@ -297,19 +295,20 @@
     // MARK: - Label Factory
     
     open func makeLabel() -> UXLabel {
-      let v = UXLabel(frame: UXRect())
-      v.translatesAutoresizingMaskIntoConstraints = false
-      
-      /* configure as label */
-      v.isEditable      = false
-      v.isBezeled       = false
-      v.drawsBackground = false
-      v.isSelectable    = false // not for raw labels
-      
-      /* common */
-      v.alignment   = .left
-      
-      return v
+        let v = UXLabel(frame: UXRect())
+        v.cell = VerticallyCenteredTextFieldCell()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        
+        /* configure as label */
+        v.isEditable      = false
+        v.isBezeled       = false
+        v.drawsBackground = false
+        v.isSelectable    = false // not for raw labels
+        
+        /* common */
+        v.alignment   = .center
+        
+        return v
     }
   }
   
