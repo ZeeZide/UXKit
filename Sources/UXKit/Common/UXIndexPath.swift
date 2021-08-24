@@ -10,18 +10,13 @@ import Foundation
     // Hm. It does seem to have it (produces ambiguities). But maybe not.
     import AppKit
   public extension IndexPath {
-    var section : Int {
-        get {
-            return 0
-        }
-    }
     var row : Int {
         get {
-            return self.startIndex
+            return self.item
         }
     }
     init(row: Int, section: Int) {
-        self.init(index: row)
+        self.init(item: row, section: section)
     }
   }
   #else

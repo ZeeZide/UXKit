@@ -118,4 +118,24 @@
     }
 
   }
+
+public class UXCustomRowView: NSTableRowView {
+
+    public override func drawSelection(in dirtyRect: NSRect) {
+        
+        if self.isSelected {
+            if #available(macOS 10.14, *) {
+                NSColor.selectedContentBackgroundColor.set()
+            } else {
+                // Fallback on earlier versions
+                NSColor.selectedMenuItemColor.set()
+            }
+        } else {
+            NSColor.clear.set()
+        }
+        
+        dirtyRect.fill()
+    }
+}
+
 #endif // os(macOS)
