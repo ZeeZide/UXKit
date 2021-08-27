@@ -93,6 +93,12 @@
     }
   }
 
+
+ extension NSTableView {
+    open override func edit(withFrame rect: NSRect, editor textObj: NSText, delegate: Any?, event: NSEvent) {
+        textObj.becomeFirstResponder()
+    }
+}
   public extension NSTableView {
     
     /// UIKit compat method for `makeView(withIdentifier:owner:)`. This one

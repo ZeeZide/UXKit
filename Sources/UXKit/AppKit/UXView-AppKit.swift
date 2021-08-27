@@ -199,11 +199,34 @@
   }
 
 open class VerticallyCenteredTextFieldCell: NSTextFieldCell {
+    
+    fileprivate var isEditingOrSelecting : Bool = false
+    
     open override func drawingRect(forBounds rect: NSRect) -> NSRect {
         let rect = super.drawingRect(forBounds: rect)
-        let size = cellSize(forBounds: rect)
-        return NSRect(x: rect.minX, y: rect.minY + (rect.height - size.height) / 2, width: rect.width, height: size.height)
+        
+        if !isEditingOrSelecting {
+            let size = cellSize(forBounds: rect)
+            return NSRect(x: rect.minX, y: rect.minY + (rect.height - size.height) / 2, width: rect.width, height: size.height)
+        }
+        
+        return rect
     }
+    
+    open override func select(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, start selStart: Int, length selLength: Int) {
+        let aRect = self.drawingRect(forBounds: rect)
+        isEditingOrSelecting = true
+        super.select(withFrame: aRect, in: controlView, editor: textObj, delegate: delegate, start: selStart, length: selLength)
+        isEditingOrSelecting = false
+    }
+    
+    open override func edit(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, event: NSEvent?) {
+        let aRect = self.drawingRect(forBounds: rect)
+        isEditingOrSelecting = true
+        super.edit(withFrame: aRect, in: controlView, editor: textObj, delegate: delegate, event: event)
+        isEditingOrSelecting = false
+    }
+    
 }
 
   public extension UXSpinner {

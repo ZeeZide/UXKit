@@ -21,7 +21,7 @@
    *
    * NOTE: This one doesn't actually support an image :-/
    */
-  open class NSTableViewCell : NSTableCellView {
+  open class NSTableViewCell : NSTableCellView, NSTextFieldDelegate {
     // Note: UITableViewCell has many more views to show selection state,
     //       regular background, etc.
     
@@ -110,7 +110,8 @@
        value1:   blue lable on the left 1/4, black detail on the right (same row)
        subtitle: label, below gray detail (two rows)
        */
-      
+      editing = false
+        
       super.init(frame: UXRect())
       
       if let id = id {
@@ -203,7 +204,7 @@
         let label = makeLabel()
         label.font = UXFont.systemFont(ofSize: style.labelSize)
         label.cell?.lineBreakMode = .byTruncatingTail
-        
+
         #if false
           label.verticalAlignment = .middleAlignment // TBD: do we want this?
           // I'm still not quite sure why we even need this. The height of the
@@ -225,6 +226,59 @@
         setNeedsUpdateConstraints()
         return label
       }
+    }
+
+    public override var acceptsFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+    
+    public override func becomeFirstResponder() -> Bool {
+        if !self.editing {
+            self.editing = true
+
+            if #available(macOS 10.14, *) {
+                _textLabel?.backgroundColor = .selectedContentBackgroundColor
+            } else {
+                // Fallback on earlier versions
+                _textLabel?.backgroundColor = .selectedMenuItemColor
+            }
+
+            _textLabel?.drawsBackground = true
+            _textLabel?.isEditable = true
+            _textLabel?.target = self
+            _textLabel?.action = #selector(didEditTableRow(_ :))
+            _textLabel?.becomeFirstResponder()
+            _textLabel?.delegate = self
+
+            return true
+        }
+        
+        return false
+    }
+    
+    public override func resignFirstResponder() -> Bool {
+        if self.editing {
+            self.editing = false
+            _textLabel?.drawsBackground = false
+            _textLabel?.abortEditing()
+            _textLabel?.isEditable = false
+        }
+        
+        return true
+    }
+    
+    var editing : Bool
+    
+    @objc func didEditTableRow(_ editor: Any) {
+        NSLog("row was edited")
+        _ = self.resignFirstResponder()
+    }
+
+    public func controlTextDidEndEditing(_ obj: Notification) {
+        NSLog("row edit aborted")
+        _ = self.resignFirstResponder()
     }
     
     var _detailTextLabel : UXLabel? = nil
