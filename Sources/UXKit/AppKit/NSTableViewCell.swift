@@ -238,20 +238,29 @@
         if !self.editing {
             self.editing = true
 
-            if #available(macOS 10.14, *) {
-                _textLabel?.backgroundColor = .selectedContentBackgroundColor
-            } else {
-                // Fallback on earlier versions
-                _textLabel?.backgroundColor = .selectedMenuItemColor
+            if let label = _textLabel {
+                if #available(macOS 10.14, *) {
+                    label.backgroundColor = .selectedContentBackgroundColor
+                } else {
+                    // Fallback on earlier versions
+                    label.backgroundColor = .selectedMenuItemColor
+                }
+
+                label.drawsBackground = true
+                label.isEditable = true
+                label.target = self
+                label.action = #selector(didEditTableRow(_ :))
+                label.becomeFirstResponder()
+                
+                if label.delegate == nil {
+                    label.delegate = self
+                }
+                
+                if let del = label.delegate as? UXTextFieldDelegate {
+                    del.textFieldDidBeginEditing(label)
+                }
             }
-
-            _textLabel?.drawsBackground = true
-            _textLabel?.isEditable = true
-            _textLabel?.target = self
-            _textLabel?.action = #selector(didEditTableRow(_ :))
-            _textLabel?.becomeFirstResponder()
-            _textLabel?.delegate = self
-
+            
             return true
         }
         
@@ -261,9 +270,16 @@
     public override func resignFirstResponder() -> Bool {
         if self.editing {
             self.editing = false
-            _textLabel?.drawsBackground = false
-            _textLabel?.abortEditing()
-            _textLabel?.isEditable = false
+            
+            if let label = _textLabel {
+                label.drawsBackground = false
+                label.abortEditing()
+                label.isEditable = false
+                
+                if let del = label.delegate as? UXTextFieldDelegate {
+                    del.textFieldDidEndEditing(label)
+                }
+            }
         }
         
         return true
@@ -273,13 +289,22 @@
     
     @objc func didEditTableRow(_ editor: Any) {
         NSLog("row was edited")
-        _ = self.resignFirstResponder()
+        if let label = _textLabel {
+            if let del = label.delegate as? UXTextFieldDelegate {
+                if del.textFieldShouldReturn(label) {
+                    // Only actually end the editing if the delegate says to.
+                    _ = self.resignFirstResponder()
+                }
+            } else {
+                // if the delegate is not an instance of UXTextFieldDelegate, meaning it
+                // doesn't support the UIKit enhancements, then just treat this as an end
+                // to editing.
+                //
+                _ = self.resignFirstResponder()
+            }
+        }
     }
 
-    public func controlTextDidEndEditing(_ obj: Notification) {
-        NSLog("row edit aborted")
-        _ = self.resignFirstResponder()
-    }
     
     var _detailTextLabel : UXLabel? = nil
     open var detailTextLabel : UXLabel? {

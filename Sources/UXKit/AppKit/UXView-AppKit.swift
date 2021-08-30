@@ -26,7 +26,6 @@
   public typealias UXSlider           = NSSlider
   public typealias UXAccessibility    = NSAccessibility
   public typealias UXAccessibilityElement = NSAccessibilityElement
-  public typealias UXTextFieldDelegate = NSTextFieldDelegate
 
   // MARK: - UXUserInterfaceItemIdentification
 
@@ -170,7 +169,7 @@
       set { alignment = newValue }
       get { return alignment }
     }
-    
+        
     var text : String? {
         get {
             return self.stringValue
@@ -196,6 +195,18 @@
             }
         }
     }
+    
+  }
+
+  // provides a cross-compatible delegate protocol.
+public protocol UXTextFieldDelegate : NSTextFieldDelegate {
+    func textField(_ textField: UXTextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+
+    func textFieldDidBeginEditing(_ textField: UXTextField)
+
+    func textFieldDidEndEditing(_ textField: UXTextField)
+
+    func textFieldShouldReturn(_ textField: UXTextField) -> Bool
   }
 
 open class VerticallyCenteredTextFieldCell: NSTextFieldCell {
