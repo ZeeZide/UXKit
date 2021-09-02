@@ -44,6 +44,16 @@
     case subtitle
   }
 
+// Not used for now.
+public enum UXTableViewStyle {
+    /// A plain table view.
+    case plain
+    /// A table view where sections have distinct groups of rows.
+    case grouped
+    /// A table view where the grouped sections are inset with rounded corners.
+    case insetGrouped
+}
+
   public protocol UXTableViewCellInit : AnyObject {
     init(style: UXTableViewCellStyle, reuseIdentifier: String?)
     func prepareForReuse()
@@ -64,8 +74,27 @@
     static var automatic = slideDown
   }
 
-  public extension NSTableView {
+public extension UXTableView  {
     
+    convenience init(frame frameRect: UXRect, style: UXTableViewStyle, withSingleColumn: Bool = true) {
+        
+        self.init(frame: frameRect)
+        
+        self.allowsColumnResizing = false
+        self.allowsColumnReordering = false
+        self.allowsEmptySelection = false
+        self.headerView = nil
+        self.usesAlternatingRowBackgroundColors = false
+        self.intercellSpacing = .zero
+        
+        if withSingleColumn {
+            let col = NSTableColumn(identifier: NSUserInterfaceItemIdentifier("tableColumn1"))
+            col.width = frameRect.width
+            col.isEditable = false
+            self.addTableColumn(col)
+        }
+    }
+        
     func insertRows(at indexes : [ IndexPath ],
                     with ao    : NSTableView.AnimationOptions? = nil)
     {
@@ -94,12 +123,12 @@
   }
 
 
- extension NSTableView {
+ extension UXTableView {
     open override func edit(withFrame rect: NSRect, editor textObj: NSText, delegate: Any?, event: NSEvent) {
         textObj.becomeFirstResponder()
     }
 }
-  public extension NSTableView {
+  public extension UXTableView {
     
     /// UIKit compat method for `makeView(withIdentifier:owner:)`. This one
     /// passes `nil` as the owner.
