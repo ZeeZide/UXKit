@@ -21,9 +21,11 @@
   public typealias UXTextView         = UITextView
   // public typealias UXPopUp         = TODO
   public typealias UXStackView        = UIStackView
-  public typealias UXCheckBox         = UISwitch
   public typealias UXImageView        = UIImageView
+  #if !os(tvOS)
+  public typealias UXCheckBox         = UISwitch
   public typealias UXSlider           = UISlider
+  #endif
   
   
   // MARK: - UXUserInterfaceItemIdentification
@@ -68,7 +70,8 @@
     }
     
   }
-  
+
+#if !os(tvOS)
   public extension UISlider {
     // UISlider base value is a `Float`
     
@@ -78,6 +81,7 @@
     }
     
   }
+#endif
 
   public extension UXView {
     

@@ -48,7 +48,9 @@
   fileprivate var uivcID : UInt8 = 42
 
   public typealias UXViewController = UIViewController
+  #if !os(tvOS)
   public typealias UXDocument       = UIDocument
+  #endif
 
   extension UIViewController : UXUserInterfaceItemIdentification {
     

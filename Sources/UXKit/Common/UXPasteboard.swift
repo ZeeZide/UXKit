@@ -23,7 +23,7 @@
       return canReadItem(withDataConformingToTypes: types.map { $0.rawValue })
     }
   }
-#else // !os(macOS)
+#elseif !os(tvOS) // !os(macOS)
   import class UIKit.UIPasteboard
   
   public typealias UXPasteboard = UIPasteboard
