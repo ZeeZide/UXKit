@@ -8,4 +8,21 @@
   
   public typealias UXFont           = UIFont
   public typealias NSUnderlineStyle = UIKit.NSUnderlineStyle
-#endif
+
+  public extension UXFont {
+    
+    /**
+     * macOS compat. Only works on iOS 13+ (otherwise returns nil).
+     *
+     * Calls into `UIFont.monospacedSystemFont()`.
+     */
+    static func userFixedPitchFont(ofSize size: CGFloat) -> UXFont? {
+      if #available(iOS 13.0, *) {
+        return UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
+      }
+      else {
+        return nil
+      }
+    }
+  }
+#endif // !os(macOS)
