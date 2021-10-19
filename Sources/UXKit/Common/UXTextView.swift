@@ -27,7 +27,10 @@
   public typealias NSLayoutManager = AppKit.NSLayoutManager
   public typealias NSTextContainer = AppKit.NSTextContainer
 
+  @available(macOS 10.11, *)
   public typealias NSTextStorageEditActions = AppKit.NSTextStorageEditActions
+  
+  @available(macOS 10.11, *)
   public extension NSTextStorage {
     typealias EditActions = NSTextStorageEditActions
   }
