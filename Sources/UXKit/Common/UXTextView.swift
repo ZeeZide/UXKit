@@ -17,6 +17,15 @@
   public typealias NSTextContainer = UIKit.NSTextContainer
 
   public typealias NSTextStorageEditActions = UIKit.NSTextStorage.EditActions
+
+  public extension UITextView {
+    
+    @inlinable
+    var string : String { // NeXTstep was right!
+      set { text = newValue}
+      get { return text }
+    }
+  }
 #else // macOS
   import class  AppKit.NSTextStorage
   import class  AppKit.NSLayoutManager
