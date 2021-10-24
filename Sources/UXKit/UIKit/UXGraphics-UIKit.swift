@@ -27,7 +27,17 @@
   {
     return UXEdgeInsets(top: top, left: left, bottom: bottom, right: right)
   }
-  
+
+  public extension UXColor {
+    
+    /// macOS compat, using `.label` on iOS 13+ (dynamic), `.black` before.
+    @inlinable
+    static var textColor : UXColor {
+      if #available(iOS 13, *) { return UXColor.label }
+      else                     { return UXColor.black }
+    }
+  }
+
   public extension CGColor {
     
     // iOS has no CGColor(gray:alpha:)
