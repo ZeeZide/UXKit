@@ -14,11 +14,19 @@
     /**
      * macOS compat. Only works on iOS 13+ (otherwise returns nil).
      *
-     * Calls into `UIFont.monospacedSystemFont()`.
+     * NOT: Calls into `UIFont.monospacedSystemFont()`.
+     * `monospacedSystemFont` seems to render crap in UITextView on iOS 15?
+     * Hence using "Menlo-Regular", and only if this is missing, fallback to
+     * `UIFont.monospacedSystemFont()`.
      */
     static func userFixedPitchFont(ofSize size: CGFloat) -> UXFont? {
       if #available(iOS 13.0, *) {
-        return UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
+        #if true
+          return UIFont(name: "Menlo-Regular", size: size)
+              ?? UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
+        #else
+          return UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
+        #endif
       }
       else {
         return nil
