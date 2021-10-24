@@ -11,7 +11,7 @@
   import class  UIKit.NSLayoutManager
   import class  UIKit.NSTextContainer
   import struct UIKit.NSTextStorageEditActions
-  import struct UIKit.UITextView
+  import class  UIKit.UITextView
 
   public typealias NSTextStorage   = UIKit.NSTextStorage
   public typealias NSLayoutManager = UIKit.NSLayoutManager
