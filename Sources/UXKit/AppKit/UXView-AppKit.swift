@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2020 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2021 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import Cocoa
@@ -19,6 +19,7 @@
   public typealias UXProgressBar      = NSProgressIndicator
   public typealias UXButton           = NSButton
   public typealias UXTextView         = NSTextView
+  public typealias UXTextViewDelegate = NSTextViewDelegate
   public typealias UXPopUp            = NSPopUpButton
   public typealias UXStackView        = NSStackView
   public typealias UXCheckBox         = NSButton
