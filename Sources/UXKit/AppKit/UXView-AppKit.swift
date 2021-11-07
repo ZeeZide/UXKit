@@ -6,6 +6,7 @@
 #if os(macOS)
   import Cocoa
 
+  public typealias UXWindow           = NSWindow
   public typealias UXView             = NSView
   public typealias UXResponder        = NSResponder
   public typealias UXControl          = NSControl

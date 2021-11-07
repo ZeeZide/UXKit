@@ -6,6 +6,7 @@
 #if !os(macOS)
   import UIKit
 
+  public typealias UXWindow           = UIWindow
   public typealias UXView             = UIView
   public typealias UXResponder        = UIResponder
   public typealias UXControl          = UIControl
