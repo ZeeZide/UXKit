@@ -24,6 +24,7 @@
     }
   }
 
+  #if !os(tvOS)
   public extension UISwitch {
     
     @discardableResult
@@ -41,5 +42,6 @@
       return self
     }
   }
+  #endif
 
 #endif

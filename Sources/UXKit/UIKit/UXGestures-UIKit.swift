@@ -8,14 +8,17 @@
 
   public typealias UXGestureRecognizer         = UIGestureRecognizer
   public typealias UXGestureRecognizerDelegate = UIGestureRecognizerDelegate
-  public typealias UXRotationGestureRecognizer = UIRotationGestureRecognizer
   public typealias UXPanGestureRecognizer      = UIPanGestureRecognizer
   public typealias UXTapGestureRecognizer      = UITapGestureRecognizer
+  #if !os(tvOS)
+  public typealias UXRotationGestureRecognizer = UIRotationGestureRecognizer
   public typealias UXPinchGestureRecognizer    = UIPinchGestureRecognizer
+  #endif
   // public typealias UXSwipeGestureRecognizer = UISwipeGestureRecognizer
   //   AppKit has separate 'click' and 'press'
 
-  
+
+  #if !os(tvOS)
   public extension UIRotationGestureRecognizer {
     
     var rotationInDegrees : CGFloat {
@@ -24,6 +27,7 @@
     }
     
   }
+  #endif
 
   public extension UIView {
     

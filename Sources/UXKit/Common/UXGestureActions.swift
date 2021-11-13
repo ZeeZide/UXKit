@@ -13,12 +13,14 @@
 #endif
 
 public extension UXView {
-  
+
+  #if !os(tvOS)
   @discardableResult
   func onRotation(_ target: AnyObject, _ action: Selector) -> Self {
     return on(gesture: UXRotationGestureRecognizer(),
               target: target, action: action)
   }
+  #endif
   
   @discardableResult
   func onPan(_ target: AnyObject, _ action: Selector) -> Self {
@@ -46,10 +48,12 @@ public extension UXView {
     #endif
   }
 
+#if !os(tvOS)
   @discardableResult
   func onPinch(_ target: AnyObject, _ action: Selector) -> Self {
     return on(gesture: UXPinchGestureRecognizer(),
               target: target, action: action)
   }
+#endif
   
 }
