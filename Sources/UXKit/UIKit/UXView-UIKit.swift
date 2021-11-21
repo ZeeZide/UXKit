@@ -42,7 +42,10 @@
     var identifier: UXUserInterfaceItemIdentifier? { get set }
   }
   
-  
+  public extension UXAccessibility.Notification {
+      static let valueChanged: UXAccessibility.Notification = .layoutChanged
+  }
+
   // MARK: - NSView Compatibility
   
   public extension UIActivityIndicatorView {
