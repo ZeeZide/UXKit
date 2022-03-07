@@ -34,7 +34,7 @@
             return UIFont(name: "Menlo-Regular", size: size)
             ?? UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
         } else {
-            return UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
+            return UIFont(name: "Menlo-Regular", size: size)
         }
 #endif
     }
