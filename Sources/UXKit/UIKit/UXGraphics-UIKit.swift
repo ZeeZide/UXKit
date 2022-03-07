@@ -36,8 +36,15 @@
     /// macOS compat, using `.label` on iOS 13+ (dynamic), `.black` before.
     @inlinable
     static var textColor : UXColor {
-      if #available(iOS 13, *) { return UXColor.label }
-      else                     { return UXColor.black }
+#if os(iOS)
+        if #available(iOS 13, *) { return UXColor.label }
+        else                     { return UXColor.black }
+#endif
+        
+#if os(tvOS)
+        if #available(tvOS 13, *) { return UXColor.label }
+        else                     { return UXColor.black }
+#endif
     }
   }
 
