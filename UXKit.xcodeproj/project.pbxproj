@@ -544,6 +544,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -607,6 +608,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -671,6 +673,7 @@
 			baseConfigurationReference = E8460D781FBF12D2002CDC28 /* MacStaticLib.xcconfig */;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_MODULE_NAME = UXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -683,6 +686,7 @@
 			baseConfigurationReference = E8460D781FBF12D2002CDC28 /* MacStaticLib.xcconfig */;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_MODULE_NAME = UXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -694,6 +698,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8460D791FBF12D2002CDC28 /* MobileStaticLib.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_MODULE_NAME = UXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -707,6 +712,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8460D791FBF12D2002CDC28 /* MobileStaticLib.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_MODULE_NAME = UXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
