@@ -20,17 +20,23 @@
      * `UIFont.monospacedSystemFont()`.
      */
     static func userFixedPitchFont(ofSize size: CGFloat) -> UXFont? {
-      if #available(iOS 13.0, *) {
-        #if true
-          return UIFont(name: "Menlo-Regular", size: size)
-              ?? UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
-        #else
-          return UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
-        #endif
-      }
-      else {
-        return nil
-      }
+#if os(iOS)
+        if #available(iOS 13.0, *) {
+            return UIFont(name: "Menlo-Regular", size: size)
+            ?? UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
+        } else {
+            return UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
+        }
+#endif
+        
+#if os(tvOS)
+        if #available(tvOS 13.0, *) {
+            return UIFont(name: "Menlo-Regular", size: size)
+            ?? UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
+        } else {
+            return UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
+        }
+#endif
     }
   }
 #endif // !os(macOS)
