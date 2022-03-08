@@ -4,7 +4,7 @@ let package = Package(
     name: "UXKit",
     
     platforms: [
-        .macOS(.v10_13), .iOS(.v10), .tvOS(.v13)
+        .macOS(.v10_13), .iOS(.v12), .tvOS(.v12)
     ],
     
     exclude: [
