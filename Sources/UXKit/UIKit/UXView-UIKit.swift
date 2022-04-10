@@ -1,11 +1,12 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2021 ZeeZide GmbH. All rights reserved.
 //
 #if !os(macOS)
   import UIKit
 
+  public typealias UXWindow           = UIWindow
   public typealias UXView             = UIView
   public typealias UXResponder        = UIResponder
   public typealias UXControl          = UIControl
@@ -19,6 +20,7 @@
   public typealias UXProgressBar      = UIProgressView
   public typealias UXButton           = UIButton
   public typealias UXTextView         = UITextView
+  public typealias UXTextViewDelegate = UITextViewDelegate
   // public typealias UXPopUp         = TODO
   public typealias UXStackView        = UIStackView
   public typealias UXImageView        = UIImageView
