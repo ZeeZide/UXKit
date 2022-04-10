@@ -7,6 +7,7 @@
 ![Swift4](https://img.shields.io/badge/swift-4-blue.svg)
 ![Swift5](https://img.shields.io/badge/swift-5-blue.svg)
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
+![iOS](https://img.shields.io/badge/os-iOS-green.svg?style=flat)
 ![Travis](https://travis-ci.org/ZeeZide/UXKit.svg?branch=develop)
 
 There is a rumor that something called *UXKit* exists as part of the Apple
