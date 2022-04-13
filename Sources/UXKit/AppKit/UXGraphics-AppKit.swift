@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2022 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import Cocoa
@@ -23,6 +23,21 @@
   #else
     public typealias UXEdgeInsets     = EdgeInsets
   #endif
+
+  public extension UXColor {
+  
+    // iOS compat
+    @inlinable
+    static var link            : UXColor { return .linkColor            }
+    @inlinable
+    static var label           : UXColor { return .labelColor           }
+    @inlinable
+    static var secondaryLabel  : UXColor { return .secondaryLabelColor  }
+    @inlinable
+    static var tertiaryLabel   : UXColor { return .tertiaryLabelColor   }
+    @inlinable
+    static var quaternaryLabel : UXColor { return .quaternaryLabelColor }
+  }
 
   public extension CGColor {
     
