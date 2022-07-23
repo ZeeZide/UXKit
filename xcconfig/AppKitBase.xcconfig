@@ -8,7 +8,7 @@
 //   MACOSX_DEPLOYMENT_TARGET[config=Debug-AppKit] = 10.11
 
 // is this OK? the SDKROOT is already being used in Base.xcconfig
-MACOSX_DEPLOYMENT_TARGET           = 10.12
+MACOSX_DEPLOYMENT_TARGET           = 10.13
 // SDKROOT                            = macosx10.11
 SDKROOT                            = macosx
 
