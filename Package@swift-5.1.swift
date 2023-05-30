@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
   name: "UXKit",
   platforms: [
-    .macOS(.v10_13), .iOS(.v12), .tvOS(.v12)
+    .macOS(.v10_13), .iOS(.v13), .tvOS(.v13)
   ],
   products: [
     .library(name: "UXKit", targets: ["UXKit"]),
