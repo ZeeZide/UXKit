@@ -79,4 +79,14 @@
   public var  uxChildren : [ UXViewController ]  { return children }
   public func uxRemoveFromParent()               { removeFromParent() }
   public var  uxParent   : UXViewController?     { return parent }
+    
+#if os(macOS)
+    func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        self.dismiss(self)
+    }
+
+    func present(_ viewControllerToPresent: UXViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        self.presentAsModalWindow(viewControllerToPresent)
+    }
+#endif
 }
