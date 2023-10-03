@@ -60,3 +60,10 @@ OTHER_SWIFT_FLAGS                             = -DXcode
 // This is a little lame (Xcode shouldn't tie the code to a version ..)
 SWIFT_VERSION                                 = 5.0
 //SWIFT_VERSION                               = 4.2
+
+ENABLE_USER_SCRIPT_SANDBOXING                 = YES
+
+// New in Xcode 15?
+ENABLE_MODULE_VERIFIER                        = YES
+MODULE_VERIFIER_SUPPORTED_LANGUAGES           = "objective-c objective-c++"
+MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS  = "gnu99 gnu++14"
