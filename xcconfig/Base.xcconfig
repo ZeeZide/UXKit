@@ -65,5 +65,5 @@ ENABLE_USER_SCRIPT_SANDBOXING                 = YES
 
 // New in Xcode 15?
 ENABLE_MODULE_VERIFIER                        = YES
-MODULE_VERIFIER_SUPPORTED_LANGUAGES           = "objective-c objective-c++"
-MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS  = "gnu99 gnu++14"
+MODULE_VERIFIER_SUPPORTED_LANGUAGES           = "objective-c" "objective-c++"
+MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS  = "gnu99" "gnu++14"
