@@ -115,6 +115,13 @@
     
   }
 
+    public extension UXLabel {
+        var text: String {
+            set { stringValue = newValue }
+            get { return stringValue }
+        }
+    }
+
   public extension UXSpinner {
     /// Use this instead of `isDisplayedWhenStopped` for UIKit compatibility.
     var hidesWhenStopped : Bool {
