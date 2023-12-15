@@ -2,8 +2,8 @@
 
 #include "Base.xcconfig"
 
-IPHONEOS_DEPLOYMENT_TARGET = 10.0
-//SDKROOT                    = iphoneos9.0
+IPHONEOS_DEPLOYMENT_TARGET = 12.0
+//SDKROOT                  = iphoneos9.0
 SDKROOT                    = iphoneos
 
 // Also: iphonesimulator
