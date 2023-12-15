@@ -1,56 +1,71 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2022 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
-import Cocoa
+  import Cocoa
+  
+  public typealias UXFloat            = CGFloat
+  
+  public typealias UXColor            = NSColor
+  
+  public typealias UXBezierPath       = NSBezierPath
+  public typealias UXRect             = NSRect
+  public typealias UXPoint            = NSPoint
+  public typealias UXSize             = NSSize
+  public let       UXEdgeInsetsMake   = NSEdgeInsetsMake
 
-public typealias UXFloat            = CGFloat
+  public typealias UXImage            = NSImage
+  public typealias UXEvent            = NSEvent
+  public typealias UXTouch            = NSTouch
 
-public typealias UXColor            = NSColor
+  #if swift(>=4.0)
+    public typealias UXEdgeInsets     = NSEdgeInsets
+  #else
+    public typealias UXEdgeInsets     = EdgeInsets
+  #endif
 
-public typealias UXBezierPath       = NSBezierPath
-public typealias UXRect             = NSRect
-public typealias UXPoint            = NSPoint
-public typealias UXSize             = NSSize
-public let       UXEdgeInsetsMake   = NSEdgeInsetsMake
+  public extension UXColor {
+  
+    // iOS compat
+    @inlinable
+    static var link            : UXColor { return .linkColor            }
+    @inlinable
+    static var label           : UXColor { return .labelColor           }
+    @inlinable
+    static var secondaryLabel  : UXColor { return .secondaryLabelColor  }
+    @inlinable
+    static var tertiaryLabel   : UXColor { return .tertiaryLabelColor   }
+    @inlinable
+    static var quaternaryLabel : UXColor { return .quaternaryLabelColor }
+  }
 
-public typealias UXImage            = NSImage
-public typealias UXEvent            = NSEvent
-public typealias UXTouch            = NSTouch
-
-#if swift(>=4.0)
-public typealias UXEdgeInsets     = NSEdgeInsets
-#else
-public typealias UXEdgeInsets     = EdgeInsets
-#endif
-
-public extension CGColor {
+  public extension CGColor {
     
     // macOS has no CGColor(gray:alpha:)
     static func new(gray: CGFloat, alpha: CGFloat) -> CGColor {
-        return CGColor(gray: gray, alpha: alpha)
+      return CGColor(gray: gray, alpha: alpha)
     }
     
-}
-
-public extension NSRect {
+  }
+  
+  public extension NSRect {
     
     func inset(by insets: NSEdgeInsets) -> NSRect {
-        var newRect = self
-        newRect.origin.x    += insets.left
-        newRect.origin.y    += insets.bottom
-        newRect.size.width  -= (insets.left + insets.right)
-        newRect.size.height -= (insets.top  + insets.bottom)
-        return newRect
+      var newRect = self
+      newRect.origin.x    += insets.left
+      newRect.origin.y    += insets.bottom
+      newRect.size.width  -= (insets.left + insets.right)
+      newRect.size.height -= (insets.top  + insets.bottom)
+      return newRect
     }
-}
+  }
 
-public extension UXImage {
+  public extension UXImage {
     
     static var applicationIconImage: UXImage? {
-        return UXImage(named: NSImage.applicationIconName)
+      return UXImage(named: NSImage.applicationIconName)
     }
     
     /// Returns an image of the specified size, allowing the caller to provide a draw function that draws into the "current" graphics context.
@@ -69,10 +84,10 @@ public extension UXImage {
             
             NSGraphicsContext.restoreGraphicsState()
         }
-        
+            
         return resultImage
     }
-}
+  }
 
 import class SpriteKit.SKScene
 
@@ -90,31 +105,31 @@ public extension NSBezierPath {
     var cgPath: CGPath {
         let path = CGMutablePath()
         let points = UnsafeMutablePointer<NSPoint>.allocate(capacity: 3)
-        
+
         if elementCount > 0 {
             for index in 0..<elementCount {
                 let pathType = element(at: index, associatedPoints: points)
-                
+
                 switch pathType {
-                    case .moveTo:
-                        path.move(to: points[0])
-                    case .lineTo:
-                        path.addLine(to: points[0])
-                    case .curveTo:
-                        path.addCurve(to: points[2], control1: points[0], control2: points[1])
-                    case .closePath:
-                        path.closeSubpath()
+                case .moveTo:
+                    path.move(to: points[0])
+                case .lineTo:
+                    path.addLine(to: points[0])
+                case .curveTo:
+                    path.addCurve(to: points[2], control1: points[0], control2: points[1])
+                case .closePath:
+                    path.closeSubpath()
                     case .cubicCurveTo:
                         path.addCurve(to: points[2], control1: points[0], control2: points[1])
                         
                     case .quadraticCurveTo:
                         path.addCurve(to: points[2], control1: points[0], control2: points[1])
-                    @unknown default:
-                        break
+                @unknown default:
+                    break
                 }
             }
         }
-        
+
         points.deallocate()
         return path
     }
