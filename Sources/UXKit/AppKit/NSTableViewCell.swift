@@ -21,7 +21,7 @@
    *
    * NOTE: This one doesn't actually support an image :-/
    */
-  open class NSTableViewCell : NSTableCellView {
+  open class NSTableViewCell : NSTableCellView, NSTextFieldDelegate {
     // Note: UITableViewCell has many more views to show selection state,
     //       regular background, etc.
     
@@ -56,6 +56,53 @@
     }
     private let style = Style()
     
+    // provided for compatibility, though not really used.
+    public enum SelectionStyle : Int {
+      case none = 0
+      case blue = 1
+      case gray = 2
+      @available(iOS 7.0, *)
+      case `default` = 3
+    }
+
+    public var selectionStyle : SelectionStyle = .default
+
+    // provided for compatibility, though not really used.
+    public enum AccessoryType : Int {
+        case none = 0 // don't show any accessory view
+        case disclosureIndicator = 1 // regular chevron. doesn't track
+        case detailDisclosureButton = 2 // info button w/ chevron. tracks
+        case checkmark = 3 // checkmark. doesn't track
+        
+        @available(iOS 7.0, *)
+        case detailButton = 4 // info button. tracks
+    }
+
+    public var accessoryType : AccessoryType = .none
+
+    
+    // provided for compatibility, though not really used.
+    public enum EditingStyle : Int {
+        case none = 0
+        case delete = 1
+        case insert = 2
+    }
+
+    // These are provided for UIKit compatibility.  Not actively used (yet).
+    public var backgroundColor : UXColor {
+        get {
+            if let col = self.layer?.backgroundColor {
+                return UXColor(cgColor: col)!
+            }
+            
+            return UXColor.textBackgroundColor
+        }
+        
+        set {
+            self.layer?.backgroundColor = newValue.cgColor
+        }
+    }
+
     public init(style: UXTableViewCellStyle, reuseIdentifier id: String?) {
       /* TODO: SETUP:
        default:  just label, no detail
@@ -63,7 +110,8 @@
        value1:   blue lable on the left 1/4, black detail on the right (same row)
        subtitle: label, below gray detail (two rows)
        */
-      
+      editing = false
+        
       super.init(frame: UXRect())
       
       if let id = id {
@@ -80,7 +128,7 @@
     }
 
     private var installedConstraintSetup = ViewSetup.none
-    private var requiredContraintSetup : ViewSetup {
+    private var requiredConstraintSetup : ViewSetup {
       switch ( _textLabel, _detailTextLabel ) {
         case ( .none, .none ): return .none
         case ( .some, .none ): return .label
@@ -93,7 +141,7 @@
     override open func updateConstraints() {
       super.updateConstraints()
       
-      let required = requiredContraintSetup
+      let required = requiredConstraintSetup
       guard installedConstraintSetup != required else { return }
       // Swift.print("from \(installedConstraintSetup) to \(required)")
       
@@ -156,7 +204,7 @@
         let label = makeLabel()
         label.font = UXFont.systemFont(ofSize: style.labelSize)
         label.cell?.lineBreakMode = .byTruncatingTail
-        
+
         #if false
           label.verticalAlignment = .middleAlignment // TBD: do we want this?
           // I'm still not quite sure why we even need this. The height of the
@@ -179,6 +227,84 @@
         return label
       }
     }
+
+    public override var acceptsFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+    
+    public override func becomeFirstResponder() -> Bool {
+        if !self.editing {
+            self.editing = true
+
+            if let label = _textLabel {
+                if #available(macOS 10.14, *) {
+                    label.backgroundColor = .selectedContentBackgroundColor
+                } else {
+                    // Fallback on earlier versions
+                    label.backgroundColor = .selectedMenuItemColor
+                }
+
+                label.drawsBackground = true
+                label.isEditable = true
+                label.target = self
+                label.action = #selector(didEditTableRow(_ :))
+                label.becomeFirstResponder()
+                
+                if label.delegate == nil {
+                    label.delegate = self
+                }
+                
+                if let del = label.delegate as? UXTextFieldDelegate {
+                    del.textFieldDidBeginEditing(label)
+                }
+            }
+            
+            return true
+        }
+        
+        return false
+    }
+    
+    public override func resignFirstResponder() -> Bool {
+        if self.editing {
+            self.editing = false
+            
+            if let label = _textLabel {
+                label.drawsBackground = false
+                label.abortEditing()
+                label.isEditable = false
+                
+                if let del = label.delegate as? UXTextFieldDelegate {
+                    del.textFieldDidEndEditing(label)
+                }
+            }
+        }
+        
+        return true
+    }
+    
+    var editing : Bool
+    
+    @objc func didEditTableRow(_ editor: Any) {
+        NSLog("row was edited")
+        if let label = _textLabel {
+            if let del = label.delegate as? UXTextFieldDelegate {
+                if del.textFieldShouldReturn(label) {
+                    // Only actually end the editing if the delegate says to.
+                    _ = self.resignFirstResponder()
+                }
+            } else {
+                // if the delegate is not an instance of UXTextFieldDelegate, meaning it
+                // doesn't support the UIKit enhancements, then just treat this as an end
+                // to editing.
+                //
+                _ = self.resignFirstResponder()
+            }
+        }
+    }
+
     
     var _detailTextLabel : UXLabel? = nil
     open var detailTextLabel : UXLabel? {
@@ -224,7 +350,6 @@
       }
     }
 
-    
     // MARK: - Separator line (TBD: should we draw this?)
     
     open var dividerColor : UXColor { return UXColor.lightGray }
@@ -249,19 +374,20 @@
     // MARK: - Label Factory
     
     open func makeLabel() -> UXLabel {
-      let v = NSTextField(frame: UXRect())
-      v.translatesAutoresizingMaskIntoConstraints = false
-      
-      /* configure as label */
-      v.isEditable      = false
-      v.isBezeled       = false
-      v.drawsBackground = false
-      v.isSelectable    = false // not for raw labels
-      
-      /* common */
-      v.alignment   = .left
-      
-      return v
+        let v = UXLabel(frame: UXRect())
+        v.cell = VerticallyCenteredTextFieldCell()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        
+        /* configure as label */
+        v.isEditable      = false
+        v.isBezeled       = false
+        v.drawsBackground = false
+        v.isSelectable    = false // not for raw labels
+        
+        /* common */
+        v.alignment   = .center
+        
+        return v
     }
   }
   

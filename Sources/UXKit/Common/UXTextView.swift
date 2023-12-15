@@ -13,10 +13,16 @@
   import class  UIKit.NSTextContainer
   import struct UIKit.NSTextStorageEditActions
   import class  UIKit.UITextView
+  import enum UIKit.NSTextAlignment
+  import class UIKit.NSMutableParagraphStyle
+  import class UIKit.NSStringDrawingContext
 
   public typealias NSTextStorage   = UIKit.NSTextStorage
   public typealias NSLayoutManager = UIKit.NSLayoutManager
   public typealias NSTextContainer = UIKit.NSTextContainer
+  public typealias NSTextAlignment = UIKit.NSTextAlignment
+  public typealias NSMutableParagraphStyle = UIKit.NSMutableParagraphStyle
+  public typealias NSStringDrawingContext = UIKit.NSStringDrawingContext
 
   public typealias NSTextStorageEditActions = UIKit.NSTextStorage.EditActions
 
@@ -48,10 +54,16 @@
   import class  AppKit.NSTextContainer
   import struct AppKit.NSTextStorageEditActions
   import class  AppKit.NSTextView
+  import enum AppKit.NSTextAlignment
+  import class AppKit.NSMutableParagraphStyle
+  import class AppKit.NSStringDrawingContext
 
   public typealias NSTextStorage   = AppKit.NSTextStorage
   public typealias NSLayoutManager = AppKit.NSLayoutManager
   public typealias NSTextContainer = AppKit.NSTextContainer
+  public typealias NSTextAlignment = AppKit.NSTextAlignment
+  public typealias NSMutableParagraphStyle = AppKit.NSMutableParagraphStyle
+  public typealias NSStringDrawingContext = AppKit.NSStringDrawingContext
 
   @available(macOS 10.11, *)
   public typealias NSTextStorageEditActions = AppKit.NSTextStorageEditActions

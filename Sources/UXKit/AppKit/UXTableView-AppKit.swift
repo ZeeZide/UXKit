@@ -32,7 +32,10 @@
    * an own class for that (`NSTableViewCell`).
    */
   public typealias UXTableViewCell      = NSTableViewCell // Yes! (own)
-  
+
+  public typealias UXTableViewDelegate = NSTableViewDelegate
+  public typealias UXTableViewDataSource = NSTableViewDataSource
+
   public enum      UXTableViewCellStyle {
     // Hm. Not really used for now.
     case `default`
@@ -40,6 +43,16 @@
     case value2
     case subtitle
   }
+
+// Not used for now.
+public enum UXTableViewStyle {
+    /// A plain table view.
+    case plain
+    /// A table view where sections have distinct groups of rows.
+    case grouped
+    /// A table view where the grouped sections are inset with rounded corners.
+    case insetGrouped
+}
 
   public protocol UXTableViewCellInit : AnyObject {
     init(style: UXTableViewCellStyle, reuseIdentifier: String?)
@@ -61,8 +74,27 @@
     static var automatic = slideDown
   }
 
-  public extension NSTableView {
+public extension UXTableView  {
     
+    convenience init(frame frameRect: UXRect, style: UXTableViewStyle, withSingleColumn: Bool = true) {
+        
+        self.init(frame: frameRect)
+        
+        self.allowsColumnResizing = false
+        self.allowsColumnReordering = false
+        self.allowsEmptySelection = false
+        self.headerView = nil
+        self.usesAlternatingRowBackgroundColors = false
+        self.intercellSpacing = .zero
+        
+        if withSingleColumn {
+            let col = NSTableColumn(identifier: NSUserInterfaceItemIdentifier("tableColumn1"))
+            col.width = frameRect.width
+            col.isEditable = false
+            self.addTableColumn(col)
+        }
+    }
+        
     func insertRows(at indexes : [ IndexPath ],
                     with ao    : NSTableView.AnimationOptions? = nil)
     {
@@ -84,17 +116,27 @@
       reloadData(forRowIndexes: IndexSet.setForRowsInPathes(indexes),
                  columnIndexes: IndexSet(integer: 0))
     }
+    
+    func numberOfRows(inSection: Int) -> Int {
+        return self.numberOfRows
+    }
   }
 
-  public extension NSTableView {
+
+ extension UXTableView {
+    open override func edit(withFrame rect: NSRect, editor textObj: NSText, delegate: Any?, event: NSEvent) {
+        textObj.becomeFirstResponder()
+    }
+}
+  public extension UXTableView {
     
     /// UIKit compat method for `makeView(withIdentifier:owner:)`. This one
     /// passes `nil` as the owner.
     func dequeueReusableCell(withIdentifier identifier: String)
-         -> UXView?
+         -> UXTableViewCell?
     {
       return makeView(withIdentifier: UXUserInterfaceItemIdentifier(identifier),
-                      owner: nil)
+                      owner: nil) as? UXTableViewCell
     }
 
     /// UIKit compat method for `makeView(withIdentifier:owner:)`. This one
@@ -102,7 +144,7 @@
     /// on AppKit.
     /// Note: Raises a fatalError if the cell could not be constructed!
     func dequeueReusableCell(withIdentifier identifier: String,
-                             for indexPath: IndexPath) -> UXView
+                             for indexPath: IndexPath) -> UXTableViewCell
     {
       guard let v = dequeueReusableCell(withIdentifier: identifier) else {
         fatalError("could not construct cell for \(identifier)")
@@ -111,4 +153,24 @@
     }
 
   }
+
+public class UXCustomRowView: NSTableRowView {
+
+    public override func drawSelection(in dirtyRect: NSRect) {
+        
+        if self.isSelected {
+            if #available(macOS 10.14, *) {
+                NSColor.selectedContentBackgroundColor.set()
+            } else {
+                // Fallback on earlier versions
+                NSColor.selectedMenuItemColor.set()
+            }
+        } else {
+            NSColor.clear.set()
+        }
+        
+        dirtyRect.fill()
+    }
+}
+
 #endif // os(macOS)

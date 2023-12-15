@@ -15,6 +15,9 @@
   public typealias UXRect             = CGRect
   public typealias UXPoint            = CGPoint
   public typealias UXSize             = CGSize
+  public typealias UXRectCorner       = UIRectCorner
+  public typealias UXEvent            = UIEvent
+  public typealias UXTouch            = UITouch
 
   public typealias UXImage            = UIImage
   
@@ -33,8 +36,15 @@
     /// macOS compat, using `.label` on iOS 13+ (dynamic), `.black` before.
     @inlinable
     static var textColor : UXColor {
-      if #available(iOS 13, *) { return UXColor.label }
-      else                     { return UXColor.black }
+#if os(iOS)
+        if #available(iOS 13, *) { return UXColor.label }
+        else                     { return UXColor.black }
+#endif
+        
+#if os(tvOS)
+        if #available(tvOS 13, *) { return UXColor.label }
+        else                     { return UXColor.black }
+#endif
     }
   }
 
@@ -56,6 +66,22 @@
       guard let icon = (Bundle.main.infoDictionary?["CFBundleIconFiles"]
                        as? [ String ])?.first else { return nil }
       return UXImage(named: icon)
+    }
+    
+    /// Returns an image of the specified size, allowing the caller to provide a draw function that draws into the "current" graphics context.
+    /// - Parameters:
+    ///   - size: The size of the image
+    ///   - drawContent: A block responsible for drawing into the image.
+    /// - Returns: The image (which may be blank).
+    static func image(withSize size: CGSize, andContent drawContent: () -> Void) -> UXImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 1.0);
+        
+        drawContent()
+        
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return result!
     }
   }
 

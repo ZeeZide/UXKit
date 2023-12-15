@@ -26,8 +26,9 @@
   public typealias UXCheckBox         = NSButton
   public typealias UXImageView        = NSImageView
   public typealias UXSlider           = NSSlider
-  
-  
+  public typealias UXAccessibility    = NSAccessibility
+  public typealias UXAccessibilityElement = NSAccessibilityElement
+
   // MARK: - UXUserInterfaceItemIdentification
 
   #if os(macOS) && swift(>=4.0)
@@ -68,6 +69,64 @@
       //       maybe?)
       return CGPoint(x: NSMidX(frame), y: NSMidY(frame))
     }
+    
+    var alpha: CGFloat {
+        get {
+            return self.alphaValue
+        }
+        set {
+            self.alphaValue = newValue
+        }
+    }
+    
+    func setSubViews(enabled: Bool) {
+        self.subviews.forEach { subView in
+            if subView.isKind(of: NSControl.self) {
+                (subView as! NSControl).isEnabled = enabled
+            }
+        
+            subView.setSubViews(enabled: enabled)
+            
+            subView.display()
+        }
+    }
+    
+    func isAnySubViewEnabled() -> Bool {
+        var result : Bool = false
+        
+        var iterator = self.subviews.enumerated().makeIterator()
+        
+        var current = iterator.next()?.element
+        
+        while current != nil && !result {
+            if current != nil {
+                if current!.isKind(of: NSControl.self) {
+                    result = (current as! NSControl).isEnabled
+                }
+            
+                if !result {
+                    result = current!.isAnySubViewEnabled()
+                    
+                    if !result {
+                        current = iterator.next()?.element
+                    }
+                }
+            }
+        }
+        
+        return result
+    }
+
+    var isUserInteractionEnabled : Bool {
+        get {
+            return isAnySubViewEnabled()
+        }
+        
+        set {
+            setSubViews(enabled: newValue)
+        }
+    }
+
   }
 
   public extension NSProgressIndicator {
@@ -112,8 +171,76 @@
       set { alignment = newValue }
       get { return alignment }
     }
+        
+    var text : String? {
+        get {
+            return self.stringValue
+        }
+        set {
+            if let nv = newValue {
+                self.stringValue = nv
+            } else {
+                self.stringValue = ""
+            }
+        }
+    }
+    
+    var placeholder : String? {
+        get {
+            return self.placeholderString
+        }
+        set {
+            if let nv = newValue {
+                self.placeholderString = nv
+            } else {
+                self.placeholderString = ""
+            }
+        }
+    }
     
   }
+
+  // provides a cross-compatible delegate protocol.
+public protocol UXTextFieldDelegate : NSTextFieldDelegate {
+    func textField(_ textField: UXTextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+
+    func textFieldDidBeginEditing(_ textField: UXTextField)
+
+    func textFieldDidEndEditing(_ textField: UXTextField)
+
+    func textFieldShouldReturn(_ textField: UXTextField) -> Bool
+  }
+
+open class VerticallyCenteredTextFieldCell: NSTextFieldCell {
+    
+    fileprivate var isEditingOrSelecting : Bool = false
+    
+    open override func drawingRect(forBounds rect: NSRect) -> NSRect {
+        let rect = super.drawingRect(forBounds: rect)
+        
+        if !isEditingOrSelecting {
+            let size = cellSize(forBounds: rect)
+            return NSRect(x: rect.minX, y: rect.minY + (rect.height - size.height) / 2, width: rect.width, height: size.height)
+        }
+        
+        return rect
+    }
+    
+    open override func select(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, start selStart: Int, length selLength: Int) {
+        let aRect = self.drawingRect(forBounds: rect)
+        isEditingOrSelecting = true
+        super.select(withFrame: aRect, in: controlView, editor: textObj, delegate: delegate, start: selStart, length: selLength)
+        isEditingOrSelecting = false
+    }
+    
+    open override func edit(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, event: NSEvent?) {
+        let aRect = self.drawingRect(forBounds: rect)
+        isEditingOrSelecting = true
+        super.edit(withFrame: aRect, in: controlView, editor: textObj, delegate: delegate, event: event)
+        isEditingOrSelecting = false
+    }
+    
+}
 
   public extension UXSpinner {
     /// Use this instead of `isDisplayedWhenStopped` for UIKit compatibility.
@@ -141,4 +268,15 @@
     }
 
   }
+
+public extension UXAccessibility {
+    static func post(notification: UXAccessibility.Notification,
+                     argument: Any?) {
+        if let arg = argument {
+            self.post(element: arg, notification: notification)
+        } else {
+            self.post(element: self, notification: notification)
+        }
+    }
+}
 #endif // os(macOS)

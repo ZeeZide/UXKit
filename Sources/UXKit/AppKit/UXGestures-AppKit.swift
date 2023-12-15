@@ -7,6 +7,7 @@
   import Cocoa
   
   public typealias UXGestureRecognizer         = NSGestureRecognizer
+  public typealias UXGestureRecognizerDelegate = NSGestureRecognizerDelegate
   public typealias UXRotationGestureRecognizer = NSRotationGestureRecognizer
   public typealias UXPanGestureRecognizer      = NSPanGestureRecognizer
   public typealias UXTapGestureRecognizer      = NSClickGestureRecognizer
@@ -16,6 +17,14 @@
 
   public extension NSView {
     
+    enum SwipeDirection {
+        case none
+        case left
+        case right
+        case up
+        case down
+    }
+    
     @discardableResult
     func on(gesture gr: UXGestureRecognizer,
             target: AnyObject, action: Selector) -> Self
@@ -24,6 +33,25 @@
       gr.action = action
       addGestureRecognizer(gr)
       return self
+    }
+    
+    // This is how macOS handles Swipe gestures.
+    override func swipe(with event: NSEvent) {
+        let x : CGFloat = event.deltaX
+        let y : CGFloat = event.deltaY
+        var direction : SwipeDirection = .none
+        
+        if (x != 0) {
+            direction = (x > 0)  ? .left : .right
+        } else if (y != 0) {
+            direction = (y > 0)  ? .up : .down
+        }
+        
+        self.swipeGestureRecognized(inDirection: direction)
+    }
+    
+    // Override this if you want to receive swipe gestures on your NSView.
+    func swipeGestureRecognized(inDirection direction: SwipeDirection) {
     }
     
   }

@@ -29,6 +29,9 @@
   public typealias UXSlider           = UISlider
   #endif
   
+  public typealias UXAccessibility    = UIAccessibility
+  public typealias UXAccessibilityElement = UIAccessibilityElement
+  public typealias UXTextFieldDelegate = UITextFieldDelegate
   
   // MARK: - UXUserInterfaceItemIdentification
   
@@ -39,7 +42,10 @@
     var identifier: UXUserInterfaceItemIdentifier? { get set }
   }
   
-  
+  public extension UXAccessibility.Notification {
+      static let valueChanged: UXAccessibility.Notification = .layoutChanged
+  }
+
   // MARK: - NSView Compatibility
   
   public extension UIActivityIndicatorView {

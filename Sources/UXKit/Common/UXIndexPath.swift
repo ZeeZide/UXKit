@@ -9,6 +9,16 @@ import Foundation
   #if swift(>=4.0)
     // Hm. It does seem to have it (produces ambiguities). But maybe not.
     import AppKit
+  public extension IndexPath {
+    var row : Int {
+        get {
+            return self.item
+        }
+    }
+    init(row: Int, section: Int) {
+        self.init(item: row, section: section)
+    }
+  }
   #else
     public extension IndexPath {
     
