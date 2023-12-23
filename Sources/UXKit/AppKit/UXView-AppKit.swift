@@ -115,14 +115,14 @@
     
   }
 
-    public extension UXLabel {
-        var text: String {
-            set { stringValue = newValue }
-            get { return stringValue }
-        }
+  public extension NSTextField {
+    var text: String {
+      set { stringValue = newValue }
+      get { return stringValue }
     }
+  }
 
-  public extension UXSpinner {
+  public extension NSProgressIndicator {
     /// Use this instead of `isDisplayedWhenStopped` for UIKit compatibility.
     var hidesWhenStopped : Bool {
       set { isDisplayedWhenStopped = !newValue }
@@ -130,7 +130,7 @@
     }
   }
 
-  public extension UXView {
+  public extension NSView {
     
     func inOwnContext(execute: () -> ()) {
       NSGraphicsContext.saveGraphicsState()
