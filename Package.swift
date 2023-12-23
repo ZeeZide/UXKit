@@ -1,5 +1,3 @@
-// swift-tools-version:5.1
-
 import PackageDescription
 
 let package = Package(
@@ -10,7 +8,6 @@ let package = Package(
   products: [
     .library(name: "UXKit", targets: ["UXKit"]),
   ],
-  dependencies: [],
   targets: [
     .target(name:"UXKit")
   ]
