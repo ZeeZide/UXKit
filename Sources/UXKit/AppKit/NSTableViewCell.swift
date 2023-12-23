@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2019 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2023 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import Cocoa
@@ -43,13 +43,8 @@
       let padding      : CGFloat = 8.0
       let labelPadding : CGFloat = 4.0
       
-      #if swift(>=4.0)
-        let labelSize       = UXFont.systemFontSize + 4.0
-        let detailLabelSize = UXFont.smallSystemFontSize
-      #else
-        let labelSize       = UXFont.systemFontSize() + 4.0
-        let detailLabelSize = UXFont.smallSystemFontSize()
-      #endif
+      let labelSize       = UXFont.systemFontSize + 4.0
+      let detailLabelSize = UXFont.smallSystemFontSize
       
       //let detailColor     = UXColor.secondaryLabelColor  // 10.10
       let detailColor     = UXColor.darkGray

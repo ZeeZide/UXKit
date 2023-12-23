@@ -1,7 +1,7 @@
 //
 //  UXKit
 //
-//  Copyright © 2016-2022 ZeeZide GmbH. All rights reserved.
+//  Copyright © 2016-2023 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
   import Cocoa
@@ -18,11 +18,7 @@
 
   public typealias UXImage            = NSImage
 
-  #if swift(>=4.0)
-    public typealias UXEdgeInsets     = NSEdgeInsets
-  #else
-    public typealias UXEdgeInsets     = EdgeInsets
-  #endif
+  public typealias UXEdgeInsets       = NSEdgeInsets
 
   public extension UXColor {
   

@@ -30,12 +30,8 @@
   
   // MARK: - UXUserInterfaceItemIdentification
 
-  #if os(macOS) && swift(>=4.0)
-    public typealias UXUserInterfaceItemIdentifier =
-                       NSUserInterfaceItemIdentifier
-  #else
-    public typealias UXUserInterfaceItemIdentifier = String
-  #endif
+  public typealias UXUserInterfaceItemIdentifier =
+                     NSUserInterfaceItemIdentifier
   
   public typealias UXUserInterfaceItemIdentification =
                      NSUserInterfaceItemIdentification
@@ -90,19 +86,11 @@
   /// Add UISwitch `isOn` property. The AppKit variant has 3 states.
   public extension NSButton {
     
-    #if swift(>=4.0)
-      /// Use this instead of `state` for UIKit compatibility.
-      var isOn: Bool {
-        set { state = newValue ? .on : .off }
-        get { return state == .on }
-      }
-    #else // Swift 3
-      /// Use this instead of `state` for UIKit compatibility.
-      public var isOn: Bool {
-        set { state = newValue ? NSOnState : NSOffState }
-        get { return state == NSOnState }
-      }
-    #endif
+    /// Use this instead of `state` for UIKit compatibility.
+    var isOn: Bool {
+      set { state = newValue ? .on : .off }
+      get { return state == .on }
+    }
   }
   
   public extension NSTextField {
@@ -115,14 +103,14 @@
     
   }
 
-    public extension UXLabel {
-        var text: String {
-            set { stringValue = newValue }
-            get { return stringValue }
-        }
+  public extension NSTextField {
+    var text: String {
+      set { stringValue = newValue }
+      get { return stringValue }
     }
+  }
 
-  public extension UXSpinner {
+  public extension NSProgressIndicator {
     /// Use this instead of `isDisplayedWhenStopped` for UIKit compatibility.
     var hidesWhenStopped : Bool {
       set { isDisplayedWhenStopped = !newValue }
@@ -130,7 +118,7 @@
     }
   }
 
-  public extension UXView {
+  public extension NSView {
     
     func inOwnContext(execute: () -> ()) {
       NSGraphicsContext.saveGraphicsState()
