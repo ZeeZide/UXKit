@@ -138,5 +138,10 @@ public extension NSBezierPath {
         let macTransform = AffineTransform(m11: transform.a, m12: transform.b, m21: transform.c, m22: transform.d, tX: transform.tx, tY: transform.ty)
         self.transform(using: macTransform)
     }
+    
+    // this provides parity with all but macOS.
+    func addCurve(to: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) {
+        curve(to: to, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+    }
 }
 #endif // os(macOS)
