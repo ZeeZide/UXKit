@@ -270,26 +270,27 @@ open class VerticallyCenteredTextFieldCell: NSTextFieldCell {
   }
 
 public extension UXAccessibility {
+    
     static func post(notification: UXAccessibility.Notification,
-                     argument: Any?) {
-        if let arg = argument {
-            if notification == .announcementRequested {
-                let userInfo = [kAXAnnouncementKey : arg, kAXPriorityKey : NSAccessibilityPriorityLevel.medium]
-                
-                self.post(element: userInfo, notification: notification)
-            } else {
-                let userInfo : [ String : Any ]
-                
-                if let children = argument as? Array<Any> {
-                    userInfo = [kAXUIElementsKey : children]
-                } else {
-                    userInfo = [kAXUIElementsKey : [arg]]
-                }
-                
-                self.post(element: userInfo, notification: notification)
+                     argument: Any) {
+        if notification == .announcementRequested {
+            let userInfo = [ NSAccessibility.NotificationUserInfoKey.announcement : argument, NSAccessibility.NotificationUserInfoKey.priority : NSAccessibilityPriorityLevel.medium]
+            
+            if let window = NSApplication.shared.mainWindow {
+                NSAccessibility.post(element: window, notification: notification, userInfo: userInfo)
             }
         } else {
-            self.post(element: self, notification: notification)
+            let userInfo : [ NSAccessibility.NotificationUserInfoKey : Any ]
+            
+            if let children = argument as? Array<Any> {
+                userInfo = [.uiElements : children]
+            } else {
+                userInfo = [.uiElements : [argument]]
+            }
+            
+            if let window = NSApplication.shared.mainWindow {
+                NSAccessibility.post(element: window, notification: notification, userInfo: userInfo)
+            }
         }
     }
 }
