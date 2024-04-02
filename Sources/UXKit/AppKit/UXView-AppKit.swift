@@ -273,16 +273,18 @@ public extension UXAccessibility {
     static func post(notification: UXAccessibility.Notification,
                      argument: Any?) {
         if let arg = argument {
-            if notification == .layoutChanged {
-                let userInfo = [kAXUIElementsKey : arg]
-                
-                self.post(element: userInfo, notification: notification)
-            } else if notification == .announcementRequested {
+            if notification == .announcementRequested {
                 let userInfo = [kAXAnnouncementKey : arg, kAXPriorityKey : NSAccessibilityPriorityLevel.medium]
                 
                 self.post(element: userInfo, notification: notification)
             } else {
-                let userInfo = [kAXUIElementsKey : arg]
+                let userInfo : [ String : Any ]
+                
+                if let children = argument as? Array<Any> {
+                    userInfo = [kAXUIElementsKey : children]
+                } else {
+                    userInfo = [kAXUIElementsKey : [arg]]
+                }
                 
                 self.post(element: userInfo, notification: notification)
             }
