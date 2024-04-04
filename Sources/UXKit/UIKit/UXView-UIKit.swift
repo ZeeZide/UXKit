@@ -44,6 +44,7 @@
   
   public extension UXAccessibility.Notification {
       static let valueChanged: UXAccessibility.Notification = .layoutChanged
+      static let announcementRequested: UXAccessibility.Notification = .announcement
   }
 
   // MARK: - NSView Compatibility
