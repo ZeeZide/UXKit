@@ -294,4 +294,10 @@ public extension UXAccessibility {
         }
     }
 }
+
+public extension NSAttributedString.Key {
+    static let accessibilitySpeechLanguage : NSAttributedString.Key = .accessibilityLanguage
+
+}
+
 #endif // os(macOS)

@@ -47,12 +47,6 @@ public extension UXAccessibility.Notification {
     static let announcementRequested: UXAccessibility.Notification = .announcement
 }
 
-public extension NSAttributedString.Key {
-    static let accessibilitySpeechLanguage : NSAttributedString.Key = .accessibilitySpeechLanguage
-
-}
-
-
 // MARK: - NSView Compatibility
 
 public extension UIActivityIndicatorView {
