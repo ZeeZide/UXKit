@@ -273,23 +273,25 @@ public extension UXAccessibility {
     
     static func post(notification: UXAccessibility.Notification,
                      argument: Any) {
-        if notification == .announcementRequested {
-            let userInfo = [ NSAccessibility.NotificationUserInfoKey.announcement : argument, NSAccessibility.NotificationUserInfoKey.priority : NSAccessibilityPriorityLevel.medium]
-            
-            if let window = NSApplication.shared.mainWindow {
-                NSAccessibility.post(element: window, notification: notification, userInfo: userInfo)
-            }
-        } else {
-            let userInfo : [ NSAccessibility.NotificationUserInfoKey : Any ]
-            
-            if let children = argument as? Array<Any> {
-                userInfo = [.uiElements : children]
+        DispatchQueue.main.async {
+            if notification == .announcementRequested {
+                let userInfo = [ NSAccessibility.NotificationUserInfoKey.announcement : argument, NSAccessibility.NotificationUserInfoKey.priority : NSAccessibilityPriorityLevel.medium]
+                
+                if let window = NSApplication.shared.mainWindow {
+                    NSAccessibility.post(element: window, notification: notification, userInfo: userInfo)
+                }
             } else {
-                userInfo = [.uiElements : [argument]]
-            }
-            
-            if let window = NSApplication.shared.mainWindow {
-                NSAccessibility.post(element: window, notification: notification, userInfo: userInfo)
+                let userInfo : [ NSAccessibility.NotificationUserInfoKey : Any ]
+                
+                if let children = argument as? Array<Any> {
+                    userInfo = [.uiElements : children]
+                } else {
+                    userInfo = [.uiElements : [argument]]
+                }
+                
+                if let window = NSApplication.shared.mainWindow {
+                    NSAccessibility.post(element: window, notification: notification, userInfo: userInfo)
+                }
             }
         }
     }
