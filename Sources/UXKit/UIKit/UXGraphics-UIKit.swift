@@ -45,6 +45,10 @@
         if #available(tvOS 13, *) { return UXColor.label }
         else                     { return UXColor.black }
 #endif
+        
+        #if os(visionOS)
+        return UXColor.black
+        #endif
     }
   }
 

@@ -37,6 +37,10 @@
             return UIFont(name: "Menlo-Regular", size: size)
         }
 #endif
+
+#if os(visionOS)
+return UIFont(name: "Menlo-Regular", size: size)
+#endif
     }
   }
 #endif // !os(macOS)
