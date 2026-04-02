@@ -4,18 +4,18 @@
 //  Copyright © 2016-2017 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
-  import Cocoa
-  
-  public typealias UXGestureRecognizer         = NSGestureRecognizer
-  public typealias UXGestureRecognizerDelegate = NSGestureRecognizerDelegate
-  public typealias UXRotationGestureRecognizer = NSRotationGestureRecognizer
-  public typealias UXPanGestureRecognizer      = NSPanGestureRecognizer
-  public typealias UXTapGestureRecognizer      = NSClickGestureRecognizer
-  public typealias UXPinchGestureRecognizer = NSMagnificationGestureRecognizer
-  // No Swipe?
-  //   but AppKit has a 'Press' in addition to 'Click'
+import Cocoa
 
-  public extension NSView {
+public typealias UXGestureRecognizer         = NSGestureRecognizer
+public typealias UXGestureRecognizerDelegate = NSGestureRecognizerDelegate
+public typealias UXRotationGestureRecognizer = NSRotationGestureRecognizer
+public typealias UXPanGestureRecognizer      = NSPanGestureRecognizer
+public typealias UXTapGestureRecognizer      = NSClickGestureRecognizer
+public typealias UXPinchGestureRecognizer = NSMagnificationGestureRecognizer
+// No Swipe?
+//   but AppKit has a 'Press' in addition to 'Click'
+
+public extension NSView {
     
     enum SwipeDirection {
         case none
@@ -29,10 +29,10 @@
     func on(gesture gr: UXGestureRecognizer,
             target: AnyObject, action: Selector) -> Self
     {
-      gr.target = target // UIKit requires a target
-      gr.action = action
-      addGestureRecognizer(gr)
-      return self
+    gr.target = target // UIKit requires a target
+    gr.action = action
+    addGestureRecognizer(gr)
+    return self
     }
     
     // This is how macOS handles Swipe gestures.
@@ -54,16 +54,30 @@
     func swipeGestureRecognized(inDirection direction: SwipeDirection) {
     }
     
-  }
-  
-  public extension UXTapGestureRecognizer {
+}
+
+public extension UXTapGestureRecognizer {
     // Note: NSClickGestureRecognizer
     // - numberOfClicksRequired
     // - numberOfTouchesRequired (10.12.2)
     
     var numberOfTapsRequired: Int {
-      set { numberOfClicksRequired = newValue }
-      get { return numberOfClicksRequired }
+        set { numberOfClicksRequired = newValue }
+        get { return numberOfClicksRequired }
     }
-  }
+}
+
+public extension UXGestureRecognizer {
+    
+    @MainActor
+    func addTarget(
+        _ target: Any,
+        action: Selector
+    ) {
+        self.target = target as AnyObject
+        self.action = action
+    }
+    
+}
+
 #endif
