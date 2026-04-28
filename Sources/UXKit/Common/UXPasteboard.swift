@@ -4,6 +4,7 @@
 //  Copyright © 2016-2020 ZeeZide GmbH. All rights reserved.
 //
 #if os(macOS)
+  import AppKit
   import class Cocoa.NSPasteboard
   
   public typealias UXPasteboard = NSPasteboard
@@ -22,6 +23,72 @@
       // The default function does not work w/ PasteboardType ...
       return canReadItem(withDataConformingToTypes: types.map { $0.rawValue })
     }
+      
+      var hasURLs: Bool {
+          get {
+              return canReadItem(withDataConformingToType: .URL)
+          }
+      }
+      
+      var hasImages: Bool {
+          get {
+              return canReadItem(withDataConformingToType: .png) ||
+              canReadItem(withDataConformingToType: .tiff)
+          }
+      }
+      
+      var image: NSImage? {
+          get {
+              return images?.first
+          }
+      }
+      
+      var images: [NSImage]? {
+          get {
+              return readObjects(forClasses: [NSImage.self]) as? [NSImage]
+          }
+      }
+      
+      var url: URL? {
+          get {
+              return urls?.first
+          }
+      }
+
+      var urls: [URL]? {
+          get {
+              if let intermediateResult: [NSURL] = readObjects(forClasses: [NSURL.self]) as? [NSURL] {
+                  var result: [URL] = []
+                  intermediateResult.forEach { nsURL in
+                      result.append(nsURL as URL)
+                  }
+                  return result
+              } else {
+                  return nil
+              }
+          }
+      }
+      
+      var string: String? {
+          get {
+              return strings?.first
+          }
+      }
+
+      var strings: [String]? {
+          get {
+              if let intermediateResult: [NSString] = readObjects(forClasses: [NSString.self]) as? [NSString] {
+                  var result: [String] = []
+                  intermediateResult.forEach { nsString in
+                      result.append(nsString as String)
+                  }
+                  return result
+              } else {
+                  return nil
+              }
+          }
+      }
+
   }
 #elseif !os(tvOS) // !os(macOS)
   import class UIKit.UIPasteboard
