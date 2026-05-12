@@ -78,6 +78,15 @@ public extension UXGestureRecognizer {
         self.action = action
     }
     
+    @MainActor
+    func removeTarget(
+        _ target: Any,
+        action: Selector
+    ) {
+        self.target = nil
+        self.action = nil
+    }
+
 }
 
 #endif
