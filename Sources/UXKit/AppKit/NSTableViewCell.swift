@@ -211,7 +211,7 @@
     override open var backgroundStyle: NSView.BackgroundStyle {
       didSet {
         switch backgroundStyle {
-          case .dark:
+          case .emphasized: // was `.dark` before, same raw value (1)
             _detailTextLabel?.textColor = NSColor.selectedTextColor
           default:
             _detailTextLabel?.textColor = style.detailColor
