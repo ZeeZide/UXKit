@@ -11,7 +11,9 @@ public typealias UXGestureRecognizerDelegate = NSGestureRecognizerDelegate
 public typealias UXRotationGestureRecognizer = NSRotationGestureRecognizer
 public typealias UXPanGestureRecognizer      = NSPanGestureRecognizer
 public typealias UXTapGestureRecognizer      = NSClickGestureRecognizer
-public typealias UXPinchGestureRecognizer = NSMagnificationGestureRecognizer
+public typealias UXPinchGestureRecognizer    = NSMagnificationGestureRecognizer
+public typealias UXPressGestureRecognizer    = NSPressGestureRecognizer
+
 // No Swipe?
 //   but AppKit has a 'Press' in addition to 'Click'
 

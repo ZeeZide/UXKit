@@ -14,6 +14,7 @@
   public typealias UXRotationGestureRecognizer = UIRotationGestureRecognizer
   public typealias UXPinchGestureRecognizer    = UIPinchGestureRecognizer
   #endif
+  public typealias UXPressGestureRecognizer    = UILongPressGestureRecognizer
   // public typealias UXSwipeGestureRecognizer = UISwipeGestureRecognizer
   //   AppKit has separate 'click' and 'press'
 
